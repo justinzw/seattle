@@ -1,0 +1,13 @@
+C:\Users\jwoo\Desktop\battlehack\foo\2\Battlehack\Battlehack\bin\Debug\Battlehack.exe.config
+C:\Users\jwoo\Desktop\battlehack\foo\2\Battlehack\Battlehack\bin\Debug\Battlehack.exe
+C:\Users\jwoo\Desktop\battlehack\foo\2\Battlehack\Battlehack\bin\Debug\Battlehack.pdb
+C:\Users\jwoo\Desktop\battlehack\foo\2\Battlehack\Battlehack\obj\Debug\Battlehack.csprojResolveAssemblyReference.cache
+C:\Users\jwoo\Desktop\battlehack\foo\2\Battlehack\Battlehack\obj\Debug\MainWindow.baml
+C:\Users\jwoo\Desktop\battlehack\foo\2\Battlehack\Battlehack\obj\Debug\MainWindow.g.cs
+C:\Users\jwoo\Desktop\battlehack\foo\2\Battlehack\Battlehack\obj\Debug\App.g.cs
+C:\Users\jwoo\Desktop\battlehack\foo\2\Battlehack\Battlehack\obj\Debug\Battlehack_MarkupCompile.cache
+C:\Users\jwoo\Desktop\battlehack\foo\2\Battlehack\Battlehack\obj\Debug\Battlehack.g.resources
+C:\Users\jwoo\Desktop\battlehack\foo\2\Battlehack\Battlehack\obj\Debug\Battlehack.Properties.Resources.resources
+C:\Users\jwoo\Desktop\battlehack\foo\2\Battlehack\Battlehack\obj\Debug\Battlehack.csproj.GenerateResource.Cache
+C:\Users\jwoo\Desktop\battlehack\foo\2\Battlehack\Battlehack\obj\Debug\Battlehack.exe
+C:\Users\jwoo\Desktop\battlehack\foo\2\Battlehack\Battlehack\obj\Debug\Battlehack.pdb
