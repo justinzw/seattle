@@ -39,10 +39,10 @@ namespace Battlehack.Models
 
         private string[] shirtList = {
             @"..\..\Images\paypal.obj",
-            @"..\..\Images\hack.obj",
-            @"..\..\Images\sendgrid.obj",
-            @"..\..\Images\nokia.obj",
-            @"..\..\Images\twilio.obj",
+            //@"..\..\Images\hack.obj",
+            //@"..\..\Images\sendgrid.obj",
+            //@"..\..\Images\nokia.obj",
+            //@"..\..\Images\twilio.obj",
             @"..\..\Images\kraken.obj",            
             @"..\..\Images\macklemores.obj",};
 
@@ -113,10 +113,15 @@ namespace Battlehack.Models
         public async void ChangeShirt()
         {
             currentindex++;
-            currentindex = currentindex % shirtList.Count();
-            this.CurrentModelPath = shirtList[currentindex];
 
-            this.CurrentModel = await this.LoadAsync(this.CurrentModelPath, false);
+            //currentindex = currentindex % shirtList.Count();
+            if (currentindex < shirtList.Count())
+            {
+                this.CurrentModelPath = shirtList[currentindex];
+
+                this.CurrentModel = await this.LoadAsync(this.CurrentModelPath, false);
+            }
+            
         }
 
         public async void FileOpen()

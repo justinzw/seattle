@@ -42,17 +42,19 @@ namespace Battlehack
                         SmsText.Text = String.Format("SMS 384220{0} to 206-745-481", viewModel.currentindex);
                         break;
                     case "background":
-                        if (this.SpaceNeedle.Visibility == System.Windows.Visibility.Hidden)
-                        {
-                            this.MaskedColor3.Visibility = System.Windows.Visibility.Hidden;
-                            this.SpaceNeedle.Visibility = System.Windows.Visibility.Visible;
-                            this.Macklemore.Visibility = System.Windows.Visibility.Hidden;
-                        }
-                        else if (this.Macklemore.Visibility == System.Windows.Visibility.Hidden)
-                        {
-                            this.SpaceNeedle.Visibility = System.Windows.Visibility.Hidden;
+                        //if (this.SpaceNeedle.Visibility == System.Windows.Visibility.Hidden)
+                        //{
+                        //    this.MaskedColor3.Visibility = System.Windows.Visibility.Hidden;
+                        //    this.SpaceNeedle.Visibility = System.Windows.Visibility.Visible;
+                        //    this.Macklemore.Visibility = System.Windows.Visibility.Hidden;
+                        //}
+                        //else if (this.Macklemore.Visibility == System.Windows.Visibility.Hidden)
+                        //{
+                        this.MaskedColor3.Visibility = System.Windows.Visibility.Hidden;
+
+                           this.SpaceNeedle.Visibility = System.Windows.Visibility.Hidden;
                             this.Macklemore.Visibility = System.Windows.Visibility.Visible;
-                        }
+                        //}
                         break;
                     case "photo":
                         this.TakeScreenShot();
@@ -96,11 +98,6 @@ namespace Battlehack
                     this.sensor = null;
                 }
             }
-
-
-
-
-
 
             //// initialize the sensor chooser and UI
             //this.sensorChooser = new KinectSensorChooser();
