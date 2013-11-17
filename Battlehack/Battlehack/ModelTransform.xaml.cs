@@ -99,7 +99,7 @@ namespace Battlehack
                 }
             }
 
-            //// initialize the sensor chooser and UI
+            // initialize the sensor chooser and UI
             //this.sensorChooser = new KinectSensorChooser();
             //this.sensorChooserUi.KinectSensorChooser = this.sensorChooser;
             //this.sensorChooser.KinectChanged += this.SensorChooserOnKinectChanged;
