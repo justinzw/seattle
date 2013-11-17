@@ -98,7 +98,7 @@ namespace Battlehack
             }
 
 
-            
+
 
 
 
@@ -188,7 +188,7 @@ namespace Battlehack
         private TransformViewModel viewModel;
 
 
-        void   MainWindow_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        void MainWindow_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Space)
             {
@@ -235,7 +235,7 @@ namespace Battlehack
                 }
                 catch (Exception)
                 {
-                    
+
                     throw;
                 }
             }
@@ -247,7 +247,7 @@ namespace Battlehack
                 }
                 catch (Exception)
                 {
-                    
+
                     throw;
                 }
             }
@@ -752,8 +752,11 @@ namespace Battlehack
                     blockBlob.UploadFromStream(fileStream);
                 }
 
+                this.StatusText.Text = String.Format("Photo taken zscreenshots_{0}.png", time);
+
+
             }
-            catch (IOException)
+            catch (Exception)
             {
 
             }

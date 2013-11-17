@@ -116,12 +116,12 @@
             <StackPanel Grid.Column="2">
                 <TextBlock Margin="0,0,0,20" FontSize="20" FontFamily="Helvetica Neue">Buying options</TextBlock>
                 <TextBlock TextWrapping="Wrap" FontSize="20" FontWeight="Bold" FontFamily="Helvetica Neue">Bellalicious Windows Phone 8 App:
-                    </TextBlock>
+                </TextBlock>
                 <Image Margin="0,0,0,20" Source="/images/QRCode.png"></Image>
                 <TextBlock TextWrapping="Wrap" FontSize="20" FontWeight="Bold" FontFamily="Helvetica Neue">Other mobile devices:
-                        </TextBlock>
+                </TextBlock>
                 <TextBlock TextWrapping="Wrap" x:Name="SmsText"  FontSize="25" FontFamily="Helvetica Neue">SMS 3848203 to 206-745-4816
-                            </TextBlock>
+                </TextBlock>
             </StackPanel>
             <Image Grid.Column="1"  Name ="Backdrop"/>
 
@@ -147,7 +147,9 @@
         </Grid>
         <Button Grid.Row="2" Style="{StaticResource SnapshotButton}" Visibility="Hidden" Content="Screenshot" Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10 10 0 10" Name="buttonScreenshot"  Click="ButtonScreenshotClick" />
         <StatusBar Grid.Row="3" HorizontalAlignment="Stretch" Name="statusBar" VerticalAlignment="Bottom" Background="White" Foreground="{StaticResource MediumGreyBrush}">
-            <StatusBarItem Padding="0 0 0 10"/>
+            <StatusBarItem Padding="0 0 0 10">
+                <TextBlock x:Name="StatusText">Ready</TextBlock>
+            </StatusBarItem>
         </StatusBar>
     </Grid>
 </Page>
