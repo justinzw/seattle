@@ -9,6 +9,7 @@
       mc:Ignorable="d" 
         d:DesignWidth="1200"
         d:DesignHeight="700"
+      Loaded="ModelTransformLoaded"
 	Title="ModelTransform">
     <Page.Resources>
         <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e"/>
@@ -91,6 +92,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+
+            <Image Source="/Images/Logo.png" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left" ></Image>
             <k:KinectSensorChooserUI Grid.Column="1" HorizontalAlignment="Center" Margin="0 0 0 5" VerticalAlignment="Top" Name="sensorChooserUi" />
         </Grid>
         <Grid Grid.Row="1" x:Name="EntireGrid" Height="800" >
@@ -101,12 +104,12 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
                 <TextBlock Margin="0,0,0,20" FontSize="20">Designs</TextBlock>
-                <Image Source="/Images/shirt1.png" />
+                <Image Source="/Images/Tshirt/paypal.png" />
                 <TextBlock FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Paypal</TextBlock>
-                <Image Source="/Images/shirt2.png" />
-                <TextBlock FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Paypal</TextBlock>
-                <Image Source="/Images/shirt1.png" />
-                <TextBlock FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Paypal</TextBlock>
+                <Image Source="/Images/Tshirt/kraken.png" />
+                <TextBlock FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Kraken</TextBlock>
+                <Image Source="/Images/Tshirt/macklemore.png" />
+                <TextBlock FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Macklemore</TextBlock>
 
             </StackPanel>
 
@@ -122,9 +125,9 @@
             </StackPanel>
             <Image Grid.Column="1"  Name ="Backdrop"/>
 
-            <Image Grid.Column="1"  Name ="Macklemore" Source="/Images/Macklemore.jpg" Margin="400,0,0,0" Visibility="Hidden"/>
+            <Image Grid.Column="1"  Name ="Macklemore" Source="/Images/Background/Macklemore.png" Margin="400,0,0,0" Visibility="Hidden"/>
 
-            <Image Grid.Column="1"  Name ="SpaceNeedle" Source="/Images/spaceneedle-whitebg.jpg" Margin="-200,0,0,0" Visibility="Hidden"/>
+            <Image Grid.Column="1"  Name ="SpaceNeedle" Source="/Images/Background/spaceneedle-whitebg.png" Margin="-200,0,0,0" Visibility="Hidden"/>
             <Image Grid.Column="1"  Name ="MaskedColor"/>
             <Image Grid.Column="1"  Name ="MaskedColor2"/>
             <Image Grid.Column="1"  Name ="MaskedColor3" Width="960" Height="720"  />

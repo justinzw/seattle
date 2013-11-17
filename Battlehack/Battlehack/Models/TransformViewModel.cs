@@ -91,7 +91,6 @@ namespace Battlehack.Models
         public TransformViewModel(HelixViewport3D viewport):this(viewport, 6)
         {
         }
-
         public TransformViewModel(HelixViewport3D viewport, int id)
         {
             if (viewport == null)

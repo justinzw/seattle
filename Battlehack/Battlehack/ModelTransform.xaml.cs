@@ -31,10 +31,12 @@ namespace Battlehack
                 switch (e.Result.Text.ToLowerInvariant())
                 {
                     case "design":
+                        this.sensor.AllFramesReady -= SensorAllFramesReady;
                         viewModel = new TransformViewModel(view1, 0);
                         viewModel.FileOpen();
                         this.DataContext = viewModel;
                         ((TransformViewModel)this.DataContext).FileOpen();
+                        this.EnableSensor(this.sensor);
                         ChooseSkeleton();
                         SmsText.Text = "SMS 3842203 to 206-745-4816";
                         break;
@@ -42,6 +44,7 @@ namespace Battlehack
                         if(this.SpaceNeedle.Visibility == System.Windows.Visibility.Hidden){
                             this.MaskedColor3.Visibility = System.Windows.Visibility.Hidden;
                             this.SpaceNeedle.Visibility = System.Windows.Visibility.Visible;
+                            this.Macklemore.Visibility = System.Windows.Visibility.Hidden;
                         }
                         else if (this.Macklemore.Visibility == System.Windows.Visibility.Hidden)
                         {
@@ -55,7 +58,13 @@ namespace Battlehack
                 }
                 Console.WriteLine("Speech recognized: " + e.Result.Text);
             }
-        }    
+        }
+        private void ModelTransformLoaded(object sender, RoutedEventArgs e)
+        {
+
+            var window = Window.GetWindow(this);
+            window.KeyDown += MainWindow_KeyDown;
+        }
 
         public ModelTransform()
         {
@@ -101,8 +110,7 @@ namespace Battlehack
             viewModel = new TransformViewModel(view1);
             viewModel.FileOpen();
             this.DataContext = viewModel;
-            ((TransformViewModel)this.DataContext).FileOpen();
-            this.KeyDown += MainWindow_KeyDown;
+            ((TransformViewModel)this.DataContext).FileOpen(); 
         }
         /// <summary>
         /// Format we will use for the depth stream
@@ -179,7 +187,31 @@ namespace Battlehack
         {
             if (e.Key == System.Windows.Input.Key.Space)
             {
-                viewModel.ChangeShirt();
+                //viewModel.ChangeShirt();
+                this.sensor.AllFramesReady -= SensorAllFramesReady;
+                this.sensor.Stop();
+                //this.skeletons = new Skeleton[this.sensor.SkeletonStream.FrameSkeletonArrayLength];              
+                viewModel = new TransformViewModel(view1, 0);
+                viewModel.FileOpen();
+                this.DataContext = viewModel;
+                ((TransformViewModel)this.DataContext).FileOpen();
+                this.sensor.AllFramesReady += this.SensorAllFramesReady;
+                this.sensor.Start();
+            }
+            else if (e.Key == System.Windows.Input.Key.B)
+            {
+
+                if (this.SpaceNeedle.Visibility == System.Windows.Visibility.Hidden)
+                {
+                    this.MaskedColor3.Visibility = System.Windows.Visibility.Hidden;
+                    this.SpaceNeedle.Visibility = System.Windows.Visibility.Visible;
+                    this.Macklemore.Visibility = System.Windows.Visibility.Hidden;
+                }
+                else if (this.Macklemore.Visibility == System.Windows.Visibility.Hidden)
+                {
+                    this.SpaceNeedle.Visibility = System.Windows.Visibility.Hidden;
+                    this.Macklemore.Visibility = System.Windows.Visibility.Visible;
+                }
             }
         }
 

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MvcApplication1.Azure" generation="1" functional="0" release="0" Id="a04b1ccd-4627-4bb0-b873-4355e87ccf95" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MvcApplication1.Azure" generation="1" functional="0" release="0" Id="240596fa-5f6e-4b97-a1a1-bce08ef18f9c" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="MvcApplication1.AzureGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -70,9 +70,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="554a63be-a9de-456c-8dd7-46170043225c" ref="Microsoft.RedDog.Contract\ServiceContract\MvcApplication1.AzureContract@ServiceDefinition">
+    <implementation Id="431681f1-7e52-4f68-9dc4-c3b0cf2ec12e" ref="Microsoft.RedDog.Contract\ServiceContract\MvcApplication1.AzureContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="590d5892-d3a8-4161-9a43-1206a5dddb51" ref="Microsoft.RedDog.Contract\Interface\MvcApplication1:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="fdb6daba-f445-465b-b598-abf3becc8c5c" ref="Microsoft.RedDog.Contract\Interface\MvcApplication1:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/MvcApplication1.Azure/MvcApplication1.AzureGroup/MvcApplication1:Endpoint1" />
           </inPort>
