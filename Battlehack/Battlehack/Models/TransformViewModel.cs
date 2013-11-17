@@ -38,13 +38,13 @@ namespace Battlehack.Models
         public int currentindex;
 
         private string[] shirtList = {
-            @"..\..\Images\kraken.obj",
+            @"..\..\Images\paypal.obj",
             @"..\..\Images\hack.obj",
             @"..\..\Images\sendgrid.obj",
             @"..\..\Images\nokia.obj",
             @"..\..\Images\twilio.obj",
-            @"..\..\Images\macklemores.obj",
-            @"..\..\Images\paypal.obj"};
+            @"..\..\Images\kraken.obj",            
+            @"..\..\Images\macklemores.obj",};
 
         MeshGeometry3D mesh;
         public MeshGeometry3D Mesh
@@ -89,7 +89,7 @@ namespace Battlehack.Models
         }
 
         public TransformViewModel(HelixViewport3D viewport)
-            : this(viewport, 6)
+            : this(viewport, 0)
         {
         }
         public TransformViewModel(HelixViewport3D viewport, int id)

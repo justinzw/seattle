@@ -98,9 +98,7 @@ namespace Battlehack
             }
 
 
-            //this.sensor2 = this.sensor = KinectSensor.KinectSensors[1];
-            //this.EnableSensor2(sensor2);
-            //this.sensor2.Start();
+            
 
 
 
@@ -113,6 +111,13 @@ namespace Battlehack
             viewModel.FileOpen();
             this.DataContext = viewModel;
             //((TransformViewModel)this.DataContext).FileOpen();
+        }
+
+        private void CallFriend()
+        {
+            this.sensor2 = this.sensor = KinectSensor.KinectSensors[1];
+            this.EnableSensor2(sensor2);
+            this.sensor2.Start();
         }
         /// <summary>
         /// Format we will use for the depth stream
@@ -183,7 +188,7 @@ namespace Battlehack
         private TransformViewModel viewModel;
 
 
-        void MainWindow_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        void   MainWindow_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Space)
             {
@@ -214,6 +219,36 @@ namespace Battlehack
                 {
                     this.SpaceNeedle.Visibility = System.Windows.Visibility.Hidden;
                     this.Macklemore.Visibility = System.Windows.Visibility.Visible;
+                }
+            }
+            else if (e.Key == System.Windows.Input.Key.F)
+            {
+
+                CallFriend();
+            }
+            else if (e.Key == System.Windows.Input.Key.U)
+            {
+                try
+                {
+
+                    this.sensor2.AllFramesReady -= this.SensorAllFramesReady2;
+                }
+                catch (Exception)
+                {
+                    
+                    throw;
+                }
+            }
+            else if (e.Key == System.Windows.Input.Key.I)
+            {
+                try
+                {
+                    this.sensor2.AllFramesReady += this.SensorAllFramesReady2;
+                }
+                catch (Exception)
+                {
+                    
+                    throw;
                 }
             }
         }
@@ -413,9 +448,6 @@ namespace Battlehack
                         0);
                 }
             }
-
-
-
 
         }
 
