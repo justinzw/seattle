@@ -211,7 +211,9 @@
     <Resource Include="Images\shirt3.png" />
     <Resource Include="Images\shirt4.png" />
     <Resource Include="Images\shirt5.png" />
-    <Resource Include="Images\shirt6.png" />
+    <Resource Include="Images\shirt6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\shirt7.png" />
     <Resource Include="Images\SnapHover.png" />
     <Resource Include="Images\SnapNormal.png" />
