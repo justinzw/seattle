@@ -19,6 +19,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Battlehack
 {
@@ -27,10 +30,12 @@ namespace Battlehack
     /// </summary>
     public partial class ModelTransform : Page
     {
+        private CloudStorageAccount storageAccount;
+
         public ModelTransform()
         {
             InitializeComponent();
-            
+            storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=battlehackfinal;AccountKey=M/8ixre2UT2TWaa4CmnhknWpEchbpFi6qNQ8bn9LG9OJlWWDzM6xMNZBkNmDtN0M78fNjQ6KW7aksn+oO8yZzw==");
             this.sensor = KinectSensor.KinectSensors[0];
 
             if (null != this.sensor)
@@ -69,7 +74,7 @@ namespace Battlehack
             this.KeyDown += MainWindow_KeyDown;
         }
 
-        
+
         /// <summary>
         /// Format we will use for the depth stream
         /// </summary>
@@ -228,7 +233,7 @@ namespace Battlehack
                         this.foregroundBitmap3.WritePixels(new Int32Rect(0, 0, colorFrame.Width, colorFrame.Height), this.colorPixelData, colorFrame.Width * 4, 0);
                     }
                 }
-                
+
             }
 
             try
@@ -237,7 +242,7 @@ namespace Battlehack
                 {
                     if (null != depthFrame)
                     {
-                        
+
                         this.backgroundRemovedColorStream.ProcessDepth(depthFrame.GetRawPixelData(), depthFrame.Timestamp);
                     }
                 }
@@ -327,7 +332,7 @@ namespace Battlehack
             {
                 if (backgroundRemovedFrame != null)
                 {
-                    if (null == this.foregroundBitmap || this.foregroundBitmap.PixelWidth != backgroundRemovedFrame.Width 
+                    if (null == this.foregroundBitmap || this.foregroundBitmap.PixelWidth != backgroundRemovedFrame.Width
                         || this.foregroundBitmap.PixelHeight != backgroundRemovedFrame.Height)
                     {
                         this.foregroundBitmap = new WriteableBitmap(backgroundRemovedFrame.Width, backgroundRemovedFrame.Height, 96.0, 96.0, PixelFormats.Bgra32, null);
@@ -509,7 +514,7 @@ namespace Battlehack
         /// </summary>
 
         private void EnableSensor(KinectSensor NewSensor)
-        {        
+        {
             if (NewSensor != null)
             {
                 try
@@ -593,46 +598,57 @@ namespace Battlehack
         /// <param name="e">event arguments</param>
         private void ButtonScreenshotClick(object sender, RoutedEventArgs e)
         {
-
-
-            int colorWidth = this.foregroundBitmap.PixelWidth;
-            int colorHeight = this.foregroundBitmap.PixelHeight;
-
-            // create a render target that we'll render our controls to
-            var renderBitmap = new RenderTargetBitmap(colorWidth, colorHeight, 96.0, 96.0, PixelFormats.Pbgra32);
-
-            var dv = new DrawingVisual();
-            using (var dc = dv.RenderOpen())
-            {
-                // render the backdrop
-                var backdropBrush = new VisualBrush(Backdrop);
-                dc.DrawRectangle(backdropBrush, null, new Rect(new Point(), new Size(colorWidth, colorHeight)));
-
-                // render the color image masked out by players
-                var colorBrush = new VisualBrush(MaskedColor);
-                dc.DrawRectangle(colorBrush, null, new Rect(new Point(), new Size(colorWidth, colorHeight)));
-            }
-
-            renderBitmap.Render(dv);
-    
-            // create a png bitmap encoder which knows how to save a .png file
-            BitmapEncoder encoder = new PngBitmapEncoder();
-
-            // create frame from the writable bitmap and add to encoder
-            encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
-
             var time = DateTime.Now.ToString("hh'-'mm'-'ss", CultureInfo.CurrentUICulture.DateTimeFormat);
+            //int colorWidth = this.foregroundBitmap3.PixelWidth;
+            //int colorHeight = this.foregroundBitmap3.PixelHeight;
+
+            //// create a render target that we'll render our controls to
+            //var renderBitmap = new RenderTargetBitmap(colorWidth, colorHeight, 96.0, 96.0, PixelFormats.Pbgra32);
+
+            //var dv = new DrawingVisual();
+            //using (var dc = dv.RenderOpen())
+            //{
+            //    // render the backdrop
+            //    var backdropBrush = new VisualBrush(Backdrop);
+            //    dc.DrawRectangle(backdropBrush, null, new Rect(new Point(), new Size(colorWidth, colorHeight)));
+
+            //    // render the color image masked out by players
+            //    var colorBrush = new VisualBrush(MaskedColor);
+            //    dc.DrawRectangle(colorBrush, null, new Rect(new Point(), new Size(colorWidth, colorHeight)));
+            //}
+
+            //renderBitmap.Render(dv);
+
+            //// create a png bitmap encoder which knows how to save a .png file
+            //BitmapEncoder encoder = new PngBitmapEncoder();           
+
+            //// create frame from the writable bitmap and add to encoder
+            //encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+
+
+            //
+            RenderTargetBitmap targetBitmap =
+                new RenderTargetBitmap((int)EntireGrid.ActualWidth,
+                                       (int)EntireGrid.ActualHeight,
+                                       96d, 96d,
+                                       PixelFormats.Default);
+            targetBitmap.Render(EntireGrid);
+
+            CroppedBitmap crop = new CroppedBitmap(targetBitmap, new Int32Rect((int)(270), (int)(200), (int)(800), (int)(600)));
+
+        BitmapEncoder pngEncoder = new PngBitmapEncoder();
+        pngEncoder.Frames.Add(BitmapFrame.Create(crop));
 
             var myPhotos = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-
             var path = System.IO.Path.Combine(myPhotos, "KinectSnapshot-" + time + ".png");
 
+            // save file to disk
             // write the new file to disk
             try
             {
                 using (var fs = new FileStream(path, FileMode.Create))
                 {
-                    encoder.Save(fs);
+                    pngEncoder.Save(fs);
                 }
 
 
@@ -641,8 +657,25 @@ namespace Battlehack
             {
 
             }
+
+            // write the file to azure
+
+            // Create the blob client.
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+            // Retrieve reference to a previously created container.
+            CloudBlobContainer container = blobClient.GetContainerReference("images");
+
+            // Retrieve reference to a blob named "myblob".
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference(string.Format("screenshots_{0}.png", time));
+
+            // Create or overwrite the "myblob" blob with contents from a local file.
+            using (var fileStream = System.IO.File.OpenRead(path))
+            {
+                blockBlob.UploadFromStream(fileStream);
+            }
         }
-        
+
         /// <summary>
         /// Handles the checking or unchecking of the near mode combo box
         /// </summary>
@@ -664,16 +697,16 @@ namespace Battlehack
         {
             if (x)
             {
-            System.Windows.Controls.Canvas.SetZIndex(this.MaskedColor3, -1);
+                System.Windows.Controls.Canvas.SetZIndex(this.MaskedColor3, -1);
                 x = !x;
             }
-            else 
+            else
             {
                 System.Windows.Controls.Canvas.SetZIndex(this.MaskedColor3, 1);
-                x=!x;
+                x = !x;
             }
 
-        
+
         }
     }
 }
