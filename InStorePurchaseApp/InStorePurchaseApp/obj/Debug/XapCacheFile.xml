@@ -1,5 +1,5 @@
-﻿<xapCache source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\InStorePurchaseApp\Bin\Debug\InStorePurchaseApp_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="11/16/2013 10:30:54 PM">
-  <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\InStorePurchaseApp\obj\Debug\InStorePurchaseApp.dll" archivePath="InStorePurchaseApp.dll" lastWriteTime="11/16/2013 10:30:54 PM" />
+﻿<xapCache source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\InStorePurchaseApp\Bin\Debug\InStorePurchaseApp_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="11/16/2013 10:34:05 PM">
+  <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\InStorePurchaseApp\obj\Debug\InStorePurchaseApp.dll" archivePath="InStorePurchaseApp.dll" lastWriteTime="11/16/2013 10:34:05 PM" />
   <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\InStorePurchaseApp\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="11/16/2013 1:25:56 PM" />
   <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\InStorePurchaseApp\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="11/16/2013 1:25:56 PM" />
   <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\InStorePurchaseApp\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="11/16/2013 1:25:56 PM" />
@@ -12,12 +12,12 @@
   <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\InStorePurchaseApp\Images\qrcode-detected.png" archivePath="Images\qrcode-detected.png" lastWriteTime="11/16/2013 9:38:25 PM" />
   <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\InStorePurchaseApp\Images\qrcode.png" archivePath="Images\qrcode.png" lastWriteTime="11/16/2013 10:25:29 PM" />
   <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\InStorePurchaseApp\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="11/16/2013 9:38:25 PM" />
-  <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\InStorePurchaseApp\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="11/16/2013 10:30:54 PM" />
+  <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\InStorePurchaseApp\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="11/16/2013 10:34:05 PM" />
   <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\packages\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll" archivePath="Newtonsoft.Json.dll" lastWriteTime="11/16/2013 1:33:48 PM" />
   <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\InStorePurchaseApp\PayPal.Checkout.SDK-WindowsPhone8.dll" archivePath="PayPal.Checkout.SDK-WindowsPhone8.dll" lastWriteTime="11/16/2013 3:05:17 PM" />
   <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\packages\ZXing.Net.0.12.0.0\lib\wp8\zxing.wp8.0.dll" archivePath="zxing.wp8.0.dll" lastWriteTime="11/16/2013 2:06:23 PM" />
   <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\packages\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.xml" archivePath="Newtonsoft.Json.xml" lastWriteTime="11/16/2013 1:33:48 PM" />
   <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\packages\ZXing.Net.0.12.0.0\lib\wp8\zxing.wp8.0.xml" archivePath="zxing.wp8.0.xml" lastWriteTime="11/16/2013 2:06:23 PM" />
   <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\InStorePurchaseApp\Images\logo-336.png" archivePath="Images\logo-336.png" lastWriteTime="11/16/2013 10:19:34 PM" />
-  <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\InStorePurchaseApp\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="11/16/2013 10:30:54 PM" />
+  <file source="C:\Users\cbingh\Documents\GitHub\seattle\InStorePurchaseApp\InStorePurchaseApp\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="11/16/2013 10:34:05 PM" />
 </xapCache>
