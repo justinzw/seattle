@@ -2,26 +2,17 @@
 using Microsoft.Kinect;
 using Microsoft.Kinect.Toolkit;
 using Microsoft.Kinect.Toolkit.BackgroundRemoval;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Speech.Recognition;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Battlehack
 {
@@ -31,6 +22,7 @@ namespace Battlehack
     public partial class ModelTransform : Page
     {
         private CloudStorageAccount storageAccount;
+        private Joint? previousJoint;
 
         public ModelTransform()
         {
@@ -73,8 +65,6 @@ namespace Battlehack
             ((TransformViewModel)this.DataContext).FileOpen();
             this.KeyDown += MainWindow_KeyDown;
         }
-
-
         /// <summary>
         /// Format we will use for the depth stream
         /// </summary>
@@ -482,7 +472,19 @@ namespace Battlehack
             float W = skel.BoneOrientations[JointType.Spine].AbsoluteRotation.Quaternion.W;
             //Console.WriteLine(X.ToString() + Y.ToString() + Z.ToString() + W);
 
+            TranslateTransform3D translateTransform = new TranslateTransform3D();
+            var leftHand = skel.Joints[JointType.ShoulderLeft];
+            var rightHand = skel.Joints[JointType.ShoulderRight];
+            var distance = 2* Math.Sqrt(Math.Pow(leftHand.Position.X - rightHand.Position.X, 2) + Math.Pow(leftHand.Position.Y - rightHand.Position.Y, 2) + Math.Pow(leftHand.Position.Z - rightHand.Position.Z, 2));
+            
+            translateTransform.OffsetX = skel.Joints[JointType.ShoulderCenter].Position.X * 3;
+            translateTransform.OffsetY = skel.Joints[JointType.HipCenter].Position.Y * 2;
+            translateTransform.OffsetZ = -distance;
 
+            ////ScaleTransform3D scaleTransform = new ScaleTransform3D();
+            ////scaleTransform.ScaleX = distance;
+            ////scaleTransform.ScaleY = distance;
+            ////scaleTransform.ScaleZ = distance * 1.5;
 
             Quaternion quaternion = new Quaternion(X, Y, Z, W);
             QuaternionRotation3D myQuaternionRotation3D = new QuaternionRotation3D(quaternion);
@@ -499,15 +501,16 @@ namespace Battlehack
             myRotateTransform3D.Rotation = myAxisAngleRotation3D;
 
             //Console.WriteLine("Axis {0}, Angle {1}", quaternion.Axis.ToString(), quaternion.Angle.ToString());
-            Console.WriteLine("{0}, {1}, {2}", quaternion.Axis.X.ToString("F"), quaternion.Axis.Y.ToString("F"), quaternion.Axis.Z.ToString("F"));
-
+            //Console.WriteLine("{0}, {1}, {2}", quaternion.Axis.X.ToString("F"), quaternion.Axis.Y.ToString("F"), quaternion.Axis.Z.ToString("F"));
+            //Console.WriteLine("{0}, {1}", translateTransform.OffsetX, translateTransform.OffsetY);
 
             Transform3DGroup myTransform3DGroup = new Transform3DGroup();
-            myTransform3DGroup.Children.Add(myRotateTransform3D);
+            myTransform3DGroup.Children.Add(myRotateTransform3D.Inverse as Transform3D);
+            myTransform3DGroup.Children.Add(translateTransform);
+            //myTransform3DGroup.Children.Add(scaleTransform);
 
-            this.Dress.Transform = (Transform3D)myTransform3DGroup.Inverse;
+            this.Dress.Transform = (Transform3D)myTransform3DGroup;
         }
-
 
         /// <summary>
         /// Enables the chosen sensor
@@ -599,34 +602,6 @@ namespace Battlehack
         private void ButtonScreenshotClick(object sender, RoutedEventArgs e)
         {
             var time = DateTime.Now.ToString("hh'-'mm'-'ss", CultureInfo.CurrentUICulture.DateTimeFormat);
-            //int colorWidth = this.foregroundBitmap3.PixelWidth;
-            //int colorHeight = this.foregroundBitmap3.PixelHeight;
-
-            //// create a render target that we'll render our controls to
-            //var renderBitmap = new RenderTargetBitmap(colorWidth, colorHeight, 96.0, 96.0, PixelFormats.Pbgra32);
-
-            //var dv = new DrawingVisual();
-            //using (var dc = dv.RenderOpen())
-            //{
-            //    // render the backdrop
-            //    var backdropBrush = new VisualBrush(Backdrop);
-            //    dc.DrawRectangle(backdropBrush, null, new Rect(new Point(), new Size(colorWidth, colorHeight)));
-
-            //    // render the color image masked out by players
-            //    var colorBrush = new VisualBrush(MaskedColor);
-            //    dc.DrawRectangle(colorBrush, null, new Rect(new Point(), new Size(colorWidth, colorHeight)));
-            //}
-
-            //renderBitmap.Render(dv);
-
-            //// create a png bitmap encoder which knows how to save a .png file
-            //BitmapEncoder encoder = new PngBitmapEncoder();           
-
-            //// create frame from the writable bitmap and add to encoder
-            //encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
-
-
-            //
             RenderTargetBitmap targetBitmap =
                 new RenderTargetBitmap((int)EntireGrid.ActualWidth,
                                        (int)EntireGrid.ActualHeight,
@@ -634,10 +609,10 @@ namespace Battlehack
                                        PixelFormats.Default);
             targetBitmap.Render(EntireGrid);
 
-            CroppedBitmap crop = new CroppedBitmap(targetBitmap, new Int32Rect((int)(270), (int)(200), (int)(800), (int)(600)));
+            CroppedBitmap crop = new CroppedBitmap(targetBitmap, new Int32Rect((int)(270), (int)(200), (int)(1000), (int)(600)));
 
-        BitmapEncoder pngEncoder = new PngBitmapEncoder();
-        pngEncoder.Frames.Add(BitmapFrame.Create(crop));
+            BitmapEncoder pngEncoder = new PngBitmapEncoder();
+            pngEncoder.Frames.Add(BitmapFrame.Create(crop));
 
             var myPhotos = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
             var path = System.IO.Path.Combine(myPhotos, "KinectSnapshot-" + time + ".png");

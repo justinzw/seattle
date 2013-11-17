@@ -42,7 +42,6 @@ C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\HelixTo
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\HelixToolkit.Wpf.pdb
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\HelixToolkit.Wpf.xml
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\KinectBackgroundRemoval180_32.dll
-C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\obj\Debug\Battlehack.csprojResolveAssemblyReference.cache
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\Microsoft.Data.Edm.dll
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\Microsoft.Data.OData.dll
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\Microsoft.WindowsAzure.Configuration.dll
@@ -80,3 +79,4 @@ C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\ko\Syst
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\ru\System.Spatial.resources.dll
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\zh-Hans\System.Spatial.resources.dll
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\zh-Hant\System.Spatial.resources.dll
+C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\Microsoft.Speech.dll

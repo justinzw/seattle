@@ -12,16 +12,19 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
-        <Grid Grid.Row="0"  Margin="-9,-17,29,22" Height="100">
+        <Grid Grid.Row="0">
+            <Image Source="/Images/Logo.png" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left" ></Image>
+        </Grid>
+        <Grid Grid.Row="1"  Margin="-9,-17,29,22">
             <k:KinectUserViewer k:KinectRegion.KinectRegion="{Binding ElementName=kinectRegion}" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" />
             <k:KinectSensorChooserUI HorizontalAlignment="Center" VerticalAlignment="Top" Name="sensorChooserUi" />
         </Grid>
 
-        <k:KinectRegion Grid.Row="1" x:Name="kinectRegion">
+        <k:KinectRegion Grid.Row="2" x:Name="kinectRegion">
             <Grid x:Name="kinectRegionGrid" Margin="10,5,10,20">
 
                 <k:KinectScrollViewer Grid.Row="0" Name="scrollViewer" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
