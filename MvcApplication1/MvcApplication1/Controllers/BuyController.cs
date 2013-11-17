@@ -24,13 +24,13 @@ namespace MvcApplication1.Controllers
                 switch (id.ToLowerInvariant())
                 {
                     case "3848203":
-                        viewModel.Item.name = "Paypal Tshirt";
+                        viewModel.Item.name = "Macklemore Tshirt";
                         viewModel.Item.price = "20.0";
                         viewModel.Item.quantity = "1";
                         viewModel.Item.currency = "USD";
                         break;
                     case "3842203":
-                        viewModel.Item.name = "Release the Kraken Tshirt";
+                        viewModel.Item.name = "Macklemore Tshirt";
                         viewModel.Item.price = "20.0";
                         viewModel.Item.quantity = "1";
                         viewModel.Item.currency = "USD";

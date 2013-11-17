@@ -2,19 +2,69 @@
     ViewBag.Title = "Buy";
 }
 @model MvcApplication1.Models.BuyViewModel
-<h2>Buy</h2>
+<html>
+	<head>
+		<title>Bellalicious Marketplace</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-panels.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+			<link rel="stylesheet" href="css/style-noscript.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+		<!-- Header -->
+			<div id="header">
+						
+				<!-- Inner -->
+					<div class="inner">
+						<header>
+							<h1>
+                                
+                            <img src="/images/logo.png" style="width:80%" />
+							</h1>
+							
+							<span class="byline2"></span>
+                            <img src="/images/macklemore.png" style="width:80%" />
+						</header>
+						<footer>
+							<a href="#banner2" class="button2"></a>
+						</footer>
+					</div>
+				
+				<!-- Nav -->
+					<nav id="nav">
+						
+					</nav>
 
-@if(Model.Item != null){
-// ITEM 
+			</div>
+			
+@if (Model.Item != null)
+{
+    // ITEM 
+    		<!-- Banner -->
+			<div id="banner">
+				<h2 style="color:#000000;">Hi. You're looking at <strong style="color:#000000;">@Model.Item.name</strong>.</h2>
+				<span class="byline" style="margin-bottom:-20px; color:#000000;">
+					Interested?
+				</span><br/>
+                
 <ul>
-    <li>Name: @Model.Item.name</li>
-    <li>Price: @Model.Item.price</li>
-    <li>Quantity: @Model.Item.quantity</li>
+    <li style="font-size:1.4em">Name: @Model.Item.name</li>
+    <li style="font-size:1.4em">Price: $20.00</li>
+    <li style="font-size:1.4em">Quantity: @Model.Item.quantity</li>
 </ul>
-
-    foreach(var photo in Model.Photos){
-        <img src="@photo.Uri" />
-    }
 
 <script src="/scripts/paypal-button.min.js?merchant=4HVKPA3XLL7AQ"
     data-button="buynow"
@@ -22,8 +72,33 @@
     data-amount="@Model.Item.price"
     data-env="sandbox"
 ></script>
+			</div>
+
+		<!-- Carousel -->
+			<div class="">
+				<div class="">
+                    @{int i = 1;}
+    @foreach(var photo in Model.Photos){
+                    
+					<article>
+						<a href="@photo.Uri" class="image featured"><img src="@photo.Uri" alt="" /></a>
+						<header>
+							<h3><a href="#">Screenshot @i</a></h3>
+						</header>
+											@{i++;}		
+					</article>
+    }
+    
+
+				</div>
+			</div>
+			
 }
 else{
     <text>Sorry please try again!
 </text>
 }
+        
+
+	</body>
+</html>
