@@ -35,7 +35,7 @@ namespace Battlehack.Models
         private Model3D currentModel;
 
         private string texture1, texture2, currentTexture;
-        private int currentindex;
+        public int currentindex;
 
         private string[] shirtList = {
             @"..\..\Images\kraken.obj",
@@ -88,7 +88,8 @@ namespace Battlehack.Models
             }
         }
 
-        public TransformViewModel(HelixViewport3D viewport):this(viewport, 6)
+        public TransformViewModel(HelixViewport3D viewport)
+            : this(viewport, 6)
         {
         }
         public TransformViewModel(HelixViewport3D viewport, int id)
@@ -104,16 +105,18 @@ namespace Battlehack.Models
             this.currentModelPath = shirtList[id];
         }
 
-        public void ChangeShirt(int id)
+        public async void ChangeShirt(int id)
         {
             this.CurrentModelPath = shirtList[id];
-            FileOpen();
+            this.CurrentModel = await this.LoadAsync(this.CurrentModelPath, false);
         }
-        public void ChangeShirt()
+        public async void ChangeShirt()
         {
             currentindex++;
-            this.CurrentModelPath = shirtList[currentindex % shirtList.Count()];
-            FileOpen();
+            currentindex = currentindex % shirtList.Count();
+            this.CurrentModelPath = shirtList[currentindex];
+
+            this.CurrentModel = await this.LoadAsync(this.CurrentModelPath, false);
         }
 
         public async void FileOpen()

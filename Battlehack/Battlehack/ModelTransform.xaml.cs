@@ -31,17 +31,19 @@ namespace Battlehack
                 switch (e.Result.Text.ToLowerInvariant())
                 {
                     case "design":
-                        this.sensor.AllFramesReady -= SensorAllFramesReady;
-                        viewModel = new TransformViewModel(view1, 0);
-                        viewModel.FileOpen();
-                        this.DataContext = viewModel;
-                        ((TransformViewModel)this.DataContext).FileOpen();
-                        this.EnableSensor(this.sensor);
-                        ChooseSkeleton();
-                        SmsText.Text = "SMS 3842203 to 206-745-4816";
+                        // this.sensor.AllFramesReady -= SensorAllFramesReady;
+                        // viewModel = new TransformViewModel(view1, 0);
+                        // viewModel.FileOpen();
+                        // this.DataContext = viewModel;
+                        //((TransformViewModel)this.DataContext).FileOpen();
+                        // this.EnableSensor(this.sensor);
+                        // ChooseSkeleton();
+                        viewModel.ChangeShirt();
+                        SmsText.Text = String.Format("SMS 384220{0} to 206-745-481", viewModel.currentindex);
                         break;
                     case "background":
-                        if(this.SpaceNeedle.Visibility == System.Windows.Visibility.Hidden){
+                        if (this.SpaceNeedle.Visibility == System.Windows.Visibility.Hidden)
+                        {
                             this.MaskedColor3.Visibility = System.Windows.Visibility.Hidden;
                             this.SpaceNeedle.Visibility = System.Windows.Visibility.Visible;
                             this.Macklemore.Visibility = System.Windows.Visibility.Hidden;
@@ -110,7 +112,7 @@ namespace Battlehack
             viewModel = new TransformViewModel(view1);
             viewModel.FileOpen();
             this.DataContext = viewModel;
-            ((TransformViewModel)this.DataContext).FileOpen(); 
+            //((TransformViewModel)this.DataContext).FileOpen();
         }
         /// <summary>
         /// Format we will use for the depth stream
@@ -149,8 +151,6 @@ namespace Battlehack
         /// </summary>
         private BackgroundRemovedColorStream backgroundRemovedColorStream;
 
-
-
         /// <summary>
         /// Our core library which does background 
         /// </summary>
@@ -187,16 +187,19 @@ namespace Battlehack
         {
             if (e.Key == System.Windows.Input.Key.Space)
             {
-                //viewModel.ChangeShirt();
-                this.sensor.AllFramesReady -= SensorAllFramesReady;
-                this.sensor.Stop();
-                //this.skeletons = new Skeleton[this.sensor.SkeletonStream.FrameSkeletonArrayLength];              
-                viewModel = new TransformViewModel(view1, 0);
-                viewModel.FileOpen();
-                this.DataContext = viewModel;
-                ((TransformViewModel)this.DataContext).FileOpen();
-                this.sensor.AllFramesReady += this.SensorAllFramesReady;
-                this.sensor.Start();
+                ////viewModel.ChangeShirt();
+                //this.sensor.AllFramesReady -= SensorAllFramesReady;
+                //this.sensor.Stop();
+                ////this.skeletons = new Skeleton[this.sensor.SkeletonStream.FrameSkeletonArrayLength];              
+                //viewModel = new TransformViewModel(view1, 0);
+                //viewModel.FileOpen();
+                //this.DataContext = viewModel;
+                //((TransformViewModel)this.DataContext).FileOpen();
+                //this.sensor.AllFramesReady += this.SensorAllFramesReady;
+                //this.sensor.Start();
+
+                viewModel.ChangeShirt();
+                SmsText.Text = String.Format("SMS 384220{0} to 206-745-481", viewModel.currentindex);
             }
             else if (e.Key == System.Windows.Input.Key.B)
             {
@@ -546,8 +549,8 @@ namespace Battlehack
             TranslateTransform3D translateTransform = new TranslateTransform3D();
             var leftHand = skel.Joints[JointType.ShoulderLeft];
             var rightHand = skel.Joints[JointType.ShoulderRight];
-            var distance = 2* Math.Sqrt(Math.Pow(leftHand.Position.X - rightHand.Position.X, 2) + Math.Pow(leftHand.Position.Y - rightHand.Position.Y, 2) + Math.Pow(leftHand.Position.Z - rightHand.Position.Z, 2));
-            
+            var distance = 2 * Math.Sqrt(Math.Pow(leftHand.Position.X - rightHand.Position.X, 2) + Math.Pow(leftHand.Position.Y - rightHand.Position.Y, 2) + Math.Pow(leftHand.Position.Z - rightHand.Position.Z, 2));
+
             translateTransform.OffsetX = skel.Joints[JointType.ShoulderCenter].Position.X * 3;
             translateTransform.OffsetY = skel.Joints[JointType.HipCenter].Position.Y * 2;
             translateTransform.OffsetZ = -distance;
@@ -613,8 +616,6 @@ namespace Battlehack
                     // Add an event handler to be called whenever there is new depth frame data
                     NewSensor.AllFramesReady += this.SensorAllFramesReady;
 
-
-
                 }
                 catch (Exception e)
                 {
@@ -676,54 +677,53 @@ namespace Battlehack
         }
         private void TakeScreenShot()
         {
-            
-            var time = DateTime.Now.ToString("yyyy-MM-dd-hh'-'mm'-'ss", CultureInfo.CurrentUICulture.DateTimeFormat);
-            RenderTargetBitmap targetBitmap =
-                new RenderTargetBitmap((int)EntireGrid.ActualWidth,
-                                       (int)EntireGrid.ActualHeight,
-                                       96d, 96d,
-                                       PixelFormats.Default);
-            targetBitmap.Render(EntireGrid);
-
-            CroppedBitmap crop = new CroppedBitmap(targetBitmap, new Int32Rect((int)(270), (int)(200), (int)(1000), (int)(600)));
-
-            BitmapEncoder pngEncoder = new PngBitmapEncoder();
-            pngEncoder.Frames.Add(BitmapFrame.Create(crop));
-
-            var myPhotos = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-            var path = System.IO.Path.Combine(myPhotos, "KinectSnapshot-" + time + ".png");
-
-            // save file to disk
-            // write the new file to disk
             try
             {
+                var time = DateTime.Now.ToString("yyyy-MM-dd-hh'-'mm'-'ss", CultureInfo.CurrentUICulture.DateTimeFormat);
+                RenderTargetBitmap targetBitmap =
+                    new RenderTargetBitmap((int)EntireGrid.ActualWidth,
+                                           (int)EntireGrid.ActualHeight,
+                                           96d, 96d,
+                                           PixelFormats.Default);
+                targetBitmap.Render(EntireGrid);
+
+                CroppedBitmap crop = new CroppedBitmap(targetBitmap, new Int32Rect((int)(270), (int)(200), (int)(1000), (int)(600)));
+
+                BitmapEncoder pngEncoder = new PngBitmapEncoder();
+                pngEncoder.Frames.Add(BitmapFrame.Create(crop));
+
+                var myPhotos = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+                var path = System.IO.Path.Combine(myPhotos, "KinectSnapshot-" + time + ".png");
+
+                // save file to disk
+                // write the new file to disk
+
                 using (var fs = new FileStream(path, FileMode.Create))
                 {
                     pngEncoder.Save(fs);
                 }
 
+                // write the file to azure
+
+                // Create the blob client.
+                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+                // Retrieve reference to a previously created container.
+                CloudBlobContainer container = blobClient.GetContainerReference("images");
+
+                // Retrieve reference to a blob named "myblob".
+                CloudBlockBlob blockBlob = container.GetBlockBlobReference(string.Format("zscreenshots_{0}.png", time));
+
+                // Create or overwrite the "myblob" blob with contents from a local file.
+                using (var fileStream = System.IO.File.OpenRead(path))
+                {
+                    blockBlob.UploadFromStream(fileStream);
+                }
 
             }
             catch (IOException)
             {
 
-            }
-
-            // write the file to azure
-
-            // Create the blob client.
-            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-
-            // Retrieve reference to a previously created container.
-            CloudBlobContainer container = blobClient.GetContainerReference("images");
-
-            // Retrieve reference to a blob named "myblob".
-            CloudBlockBlob blockBlob = container.GetBlockBlobReference(string.Format("zscreenshots_{0}.png", time));
-
-            // Create or overwrite the "myblob" blob with contents from a local file.
-            using (var fileStream = System.IO.File.OpenRead(path))
-            {
-                blockBlob.UploadFromStream(fileStream);
             }
         }
 

@@ -135,7 +135,7 @@
 
             <t:HelixViewport3D x:Name="view1" Grid.Column="1" Background="Transparent" >
                 <t:HelixViewport3D.DefaultCamera>
-                    <PerspectiveCamera Position="0, 0, 100" LookDirection="0, 0, -100" UpDirection="0,1,0" FieldOfView="60" NearPlaneDistance="0.001" />
+                    <PerspectiveCamera Position="0, 0, 1" LookDirection="0, 0, -1" UpDirection="0,1,0" FieldOfView="60" NearPlaneDistance="0.001" FarPlaneDistance="30"/>
                 </t:HelixViewport3D.DefaultCamera>
 
                 <t:DefaultLights/>
