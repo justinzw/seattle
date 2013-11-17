@@ -183,6 +183,15 @@
   <ItemGroup>
     <Resource Include="Images\macklemore.jpg" />
     <Resource Include="Images\spaceneedle.jpg" />
+    <Resource Include="Images\QRcode.png" />
+    <Resource Include="Images\spaceneedle-whitebg.jpg" />
+    <Resource Include="Images\Tshirt\battlehack.png" />
+    <Resource Include="Images\Tshirt\kraken.png" />
+    <Resource Include="Images\Tshirt\macklemore.png" />
+    <Resource Include="Images\Tshirt\nokia.png" />
+    <Resource Include="Images\Tshirt\paypal.png" />
+    <Resource Include="Images\Tshirt\sendgrid.png" />
+    <Resource Include="Images\Tshirt\twilio.png" />
     <Content Include="Microsoft.Speech.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

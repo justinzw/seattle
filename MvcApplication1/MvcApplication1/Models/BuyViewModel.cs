@@ -10,5 +10,7 @@ namespace MvcApplication1.Models
     {
         public Item Item;
         public string MerchantId;
+
+        public string[] Photos;
     }
 }

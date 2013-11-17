@@ -12,6 +12,9 @@
     <li>Quantity: @Model.Item.quantity</li>
 </ul>
 
+    @foreach(var photo in Model.Photos){
+        <img src="@photo" />
+    }
 
 <script src="/scripts/paypal-button.min.js?merchant=4HVKPA3XLL7AQ"
     data-button="buynow"

@@ -94,17 +94,43 @@
             <k:KinectSensorChooserUI Grid.Column="1" HorizontalAlignment="Center" Margin="0 0 0 5" VerticalAlignment="Top" Name="sensorChooserUi" />
         </Grid>
         <Grid Grid.Row="1" x:Name="EntireGrid" Height="800" >
-            <Image Name ="Backdrop"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock Margin="0,0,0,20" FontSize="20">Designs</TextBlock>
+                <Image Source="/Images/shirt1.png" />
+                <TextBlock FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Paypal</TextBlock>
+                <Image Source="/Images/shirt2.png" />
+                <TextBlock FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Paypal</TextBlock>
+                <Image Source="/Images/shirt1.png" />
+                <TextBlock FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Paypal</TextBlock>
 
-            <Image Name ="Macklemore" Source="/Images/Macklemore.jpg" Margin="400,0,0,0" Visibility="Hidden"/>
+            </StackPanel>
 
-            <Image Name ="SpaceNeedle" Source="/Images/SpaceNeedle.jpg" Margin="-200,0,0,0" Visibility="Hidden"/>
-            <Image Name ="MaskedColor"/>
-            <Image Name ="MaskedColor2"/>
-            <Image Name ="MaskedColor3" Width="960" Height="720"  />
+            <StackPanel Grid.Column="2">
+                <TextBlock Margin="0,0,0,20" FontSize="20">Buying options</TextBlock>
+                <TextBlock TextWrapping="Wrap" FontSize="20" FontWeight="Bold">Bellalicious Windows Phone 8 App:
+                    </TextBlock>
+                <Image Margin="0,0,0,20" Source="/images/QRCode.png"></Image>
+                    <TextBlock TextWrapping="Wrap" FontSize="20" FontWeight="Bold">Other mobile devices:
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" x:Name="SmsText"  FontSize="20">SMS 3848203 to 206-745-4816
+                            </TextBlock>
+            </StackPanel>
+            <Image Grid.Column="1"  Name ="Backdrop"/>
+
+            <Image Grid.Column="1"  Name ="Macklemore" Source="/Images/Macklemore.jpg" Margin="400,0,0,0" Visibility="Hidden"/>
+
+            <Image Grid.Column="1"  Name ="SpaceNeedle" Source="/Images/spaceneedle-whitebg.jpg" Margin="-200,0,0,0" Visibility="Hidden"/>
+            <Image Grid.Column="1"  Name ="MaskedColor"/>
+            <Image Grid.Column="1"  Name ="MaskedColor2"/>
+            <Image Grid.Column="1"  Name ="MaskedColor3" Width="960" Height="720"  />
 
 
-            <t:HelixViewport3D x:Name="view1"  Background="Transparent" >
+            <t:HelixViewport3D x:Name="view1" Grid.Column="1" Background="Transparent" >
                 <t:HelixViewport3D.DefaultCamera>
                     <PerspectiveCamera Position="0, 0, 100" LookDirection="0, 0, -100" UpDirection="0,1,0" FieldOfView="60" NearPlaneDistance="0.001" />
                 </t:HelixViewport3D.DefaultCamera>
@@ -116,7 +142,7 @@
             </t:HelixViewport3D>
 
         </Grid>
-        <Button Grid.Row="2" Style="{StaticResource SnapshotButton}" Visibility="Visible" Content="Screenshot" Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10 10 0 10" Name="buttonScreenshot"  Click="ButtonScreenshotClick" />
+        <Button Grid.Row="2" Style="{StaticResource SnapshotButton}" Visibility="Hidden" Content="Screenshot" Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10 10 0 10" Name="buttonScreenshot"  Click="ButtonScreenshotClick" />
         <StatusBar Grid.Row="3" HorizontalAlignment="Stretch" Name="statusBar" VerticalAlignment="Bottom" Background="White" Foreground="{StaticResource MediumGreyBrush}">
             <StatusBarItem Padding="0 0 0 10"/>
         </StatusBar>

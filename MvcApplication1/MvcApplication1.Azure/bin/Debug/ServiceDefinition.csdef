@@ -25,7 +25,7 @@
     </Imports>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="c:\users\cbingh\documents\visual studio 2012\Projects\MvcApplication1\MvcApplication1.Azure\rcf\Debug\MvcApplication1Content\" />
+        <SourceDirectory path="C:\Users\cbingh\Documents\GitHub\seattle\MvcApplication1\MvcApplication1.Azure\rcf\Debug\MvcApplication1Content\" />
       </Content>
     </Contents>
   </WebRole>

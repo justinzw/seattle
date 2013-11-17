@@ -36,6 +36,7 @@ namespace Battlehack
                         this.DataContext = viewModel;
                         ((TransformViewModel)this.DataContext).FileOpen();
                         ChooseSkeleton();
+                        SmsText.Text = "SMS 3842203 to 206-745-4816";
                         break;
                     case "background":
                         if(this.SpaceNeedle.Visibility == System.Windows.Visibility.Hidden){
