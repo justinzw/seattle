@@ -103,24 +103,24 @@
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
-                <TextBlock Margin="0,0,0,20" FontSize="20">Designs</TextBlock>
+                <TextBlock Margin="0,0,0,20" FontSize="20" FontFamily="Helvetica Neue">Designs</TextBlock>
                 <Image Source="/Images/Tshirt/paypal.png" />
-                <TextBlock FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Paypal</TextBlock>
+                <TextBlock FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="Helvetica Neue">Paypal</TextBlock>
                 <Image Source="/Images/Tshirt/kraken.png" />
-                <TextBlock FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Kraken</TextBlock>
+                <TextBlock FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="Helvetica Neue">Kraken</TextBlock>
                 <Image Source="/Images/Tshirt/macklemore.png" />
-                <TextBlock FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Macklemore</TextBlock>
+                <TextBlock FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="Helvetica Neue">Macklemore</TextBlock>
 
             </StackPanel>
 
             <StackPanel Grid.Column="2">
-                <TextBlock Margin="0,0,0,20" FontSize="20">Buying options</TextBlock>
-                <TextBlock TextWrapping="Wrap" FontSize="20" FontWeight="Bold">Bellalicious Windows Phone 8 App:
+                <TextBlock Margin="0,0,0,20" FontSize="20" FontFamily="Helvetica Neue">Buying options</TextBlock>
+                <TextBlock TextWrapping="Wrap" FontSize="20" FontWeight="Bold" FontFamily="Helvetica Neue">Bellalicious Windows Phone 8 App:
                     </TextBlock>
                 <Image Margin="0,0,0,20" Source="/images/QRCode.png"></Image>
-                    <TextBlock TextWrapping="Wrap" FontSize="20" FontWeight="Bold">Other mobile devices:
+                <TextBlock TextWrapping="Wrap" FontSize="20" FontWeight="Bold" FontFamily="Helvetica Neue">Other mobile devices:
                         </TextBlock>
-                        <TextBlock TextWrapping="Wrap" x:Name="SmsText"  FontSize="20">SMS 3848203 to 206-745-4816
+                <TextBlock TextWrapping="Wrap" x:Name="SmsText"  FontSize="20" FontFamily="Helvetica Neue">SMS 3848203 to 206-745-4816
                             </TextBlock>
             </StackPanel>
             <Image Grid.Column="1"  Name ="Backdrop"/>
