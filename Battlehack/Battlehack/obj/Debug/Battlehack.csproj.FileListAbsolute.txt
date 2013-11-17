@@ -33,7 +33,12 @@ C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\Microso
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.dll
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\obj\Debug\MainSelector.baml
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\obj\Debug\Battlehack.csprojResolveAssemblyReference.cache
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\KinectBackgroundRemoval180_64.dll
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\KinectInteraction180_32.dll
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\KinectInteraction180_64.dll
+C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\obj\Debug\ModelTransform.baml
+C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\obj\Debug\ModelTransform.g.cs
+C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\HelixToolkit.Wpf.dll
+C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\HelixToolkit.Wpf.pdb
+C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\HelixToolkit.Wpf.xml
+C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\KinectBackgroundRemoval180_32.dll

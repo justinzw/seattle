@@ -104,6 +104,6 @@
     
 
     <Grid>
-        <Frame x:Name="mainFrame" Grid.Row="2" BorderThickness="2" Margin="10,10,10,10" BorderBrush="#FFB4B4B4" Content="" Padding="10"/>
+        <Frame x:Name="mainFrame" Grid.Row="2" BorderThickness="2" Margin="10,10,10,10" BorderBrush="#FFB4B4B4" Content="" NavigationUIVisibility="Hidden" Padding="10"/>
     </Grid>
 </Window>
