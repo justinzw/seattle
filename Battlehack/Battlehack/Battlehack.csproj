@@ -194,6 +194,10 @@
     <Resource Include="Images\Tshirt\twilio.png" />
     <Resource Include="Images\Background\macklemore.png" />
     <Resource Include="Images\Background\spaceneedle-whitebg.png" />
+    <Resource Include="Images\checkout.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\paypal-logo.jpg" />
     <Content Include="Microsoft.Speech.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
