@@ -1,4 +1,5 @@
-﻿using PayPal.Api.Payments;
+﻿using Microsoft.WindowsAzure.Storage.Blob;
+using PayPal.Api.Payments;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,6 @@ namespace MvcApplication1.Models
         public Item Item;
         public string MerchantId;
 
-        public string[] Photos;
+        public IEnumerable<ICloudBlob> Photos;
     }
 }

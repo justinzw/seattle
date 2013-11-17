@@ -48,13 +48,8 @@ namespace MvcApplication1.Controllers
             // Retrieve reference to a previously created container.
             CloudBlobContainer container = blobClient.GetContainerReference("images");
 
-            var blobs = container.ListBlobs()
-                .OrderByDescending(b => b.Uri).Skip(0).Take(3);
-            viewModel.Photos = new string[3];
-            for(int i=0; i<3; i++)
-            {
-                viewModel.Photos[i] = blobs.ElementAt(i).Uri.ToString();
-            }
+            viewModel.Photos = container.ListBlobs(null, true, BlobListingDetails.All, null, null).OrderByDescending(d => d.Uri.ToString()).Skip(0).Take(3).Select(d => (ICloudBlob)d);
+
             return View(viewModel);
         }
 

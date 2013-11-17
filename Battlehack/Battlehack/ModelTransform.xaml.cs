@@ -645,7 +645,7 @@ namespace Battlehack
         private void TakeScreenShot()
         {
             
-            var time = DateTime.Now.ToString("hh'-'mm'-'ss", CultureInfo.CurrentUICulture.DateTimeFormat);
+            var time = DateTime.Now.ToString("yyyy-MM-dd-hh'-'mm'-'ss", CultureInfo.CurrentUICulture.DateTimeFormat);
             RenderTargetBitmap targetBitmap =
                 new RenderTargetBitmap((int)EntireGrid.ActualWidth,
                                        (int)EntireGrid.ActualHeight,
@@ -686,7 +686,7 @@ namespace Battlehack
             CloudBlobContainer container = blobClient.GetContainerReference("images");
 
             // Retrieve reference to a blob named "myblob".
-            CloudBlockBlob blockBlob = container.GetBlockBlobReference(string.Format("screenshots_{0}.png", time));
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference(string.Format("zscreenshots_{0}.png", time));
 
             // Create or overwrite the "myblob" blob with contents from a local file.
             using (var fileStream = System.IO.File.OpenRead(path))
