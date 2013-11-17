@@ -181,6 +181,8 @@
     <Resource Include="Images\kraken.png" />
     <Resource Include="Images\hack.png" />
     <Resource Include="Images\karen.png" />
+    <Resource Include="Images\next.png" />
+    <Resource Include="Images\previous.png" />
     <Content Include="KinectBackgroundRemoval180_32.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -42,3 +42,4 @@ C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\HelixTo
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\HelixToolkit.Wpf.pdb
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\HelixToolkit.Wpf.xml
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\KinectBackgroundRemoval180_32.dll
+C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\obj\Debug\Battlehack.csprojResolveAssemblyReference.cache

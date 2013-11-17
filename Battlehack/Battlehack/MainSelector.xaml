@@ -16,7 +16,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0"  Margin="10 0 10 5" Height="100">
+        <Grid Grid.Row="0"  Margin="-9,-17,29,22" Height="100">
             <k:KinectUserViewer k:KinectRegion.KinectRegion="{Binding ElementName=kinectRegion}" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" />
             <k:KinectSensorChooserUI HorizontalAlignment="Center" VerticalAlignment="Top" Name="sensorChooserUi" />
         </Grid>
@@ -27,28 +27,27 @@
                 <k:KinectScrollViewer Grid.Row="0" Name="scrollViewer" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
                     <WrapPanel VerticalAlignment="Center" x:Name="wrapPanel" Orientation="Vertical" k:KinectTileButton.Click="KinectTileButtonClick">
                         <!-- items for design layout.  They will be replaced at runtime. -->
-                        <k:KinectTileButton Label="Plaid" Width="600" Height="600" Background="White">
+                        <k:KinectTileButton Label="Plaid" Width="600" Height="600" Background="White" BorderThickness="0.0">
                             <Image Source="/Images/shirt1.png"></Image>
                         </k:KinectTileButton>
-                        <k:KinectTileButton Label="Plaid"  Width="600" Height="600" Background="White">
+                        <k:KinectTileButton Label="Plaid"  Width="600" Height="600" Background="White" BorderThickness="0.0">
                             <Image Source="/Images/shirt2.png"></Image>
                         </k:KinectTileButton>
-                        <k:KinectTileButton Label="Plaid"  Width="600" Height="600" Background="White">
+                        <k:KinectTileButton Label="Plaid"  Width="600" Height="600" Background="White" BorderThickness="0.0">
                             <Image Source="/Images/shirt3.png"></Image>
                         </k:KinectTileButton>
-                        <k:KinectTileButton Label="Plaid" Width="600" Height="600" Background="White">
+                        <k:KinectTileButton Label="Plaid" Width="600" Height="600" Background="White" BorderThickness="0.0">
                             <Image Source="/Images/shirt4.png"></Image>
                         </k:KinectTileButton>
-                        <k:KinectTileButton Label="Plaid" Width="600" Height="600" Background="White">
+                        <k:KinectTileButton Label="Plaid" Width="600" Height="600" Background="White" BorderThickness="0.0">
                             <Image Source="/Images/shirt5.png"></Image>
                         </k:KinectTileButton>
-                        <k:KinectTileButton Label="Plaid" Width="600" Height="600" Background="White">
+                        <k:KinectTileButton Label="Plaid" Width="600" Height="600" Background="White" BorderThickness="0.0">
                             <Image Source="/Images/shirt6.png"></Image>
                         </k:KinectTileButton>
-                        <k:KinectTileButton Label="T-Shirt" Width="600" Height="600" Background="White">
+                        <k:KinectTileButton Label="T-Shirt" Width="600" Height="600" Background="White" BorderThickness="0.0">
                             <Image Source="/Images/shirt7.png"></Image>
                         </k:KinectTileButton>
-
 
                     </WrapPanel>
                 </k:KinectScrollViewer>
