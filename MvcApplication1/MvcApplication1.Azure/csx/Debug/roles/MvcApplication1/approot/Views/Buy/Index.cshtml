@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Buy";
+}
+@model MvcApplication1.Models.BuyViewModel
+<h2>Buy</h2>
+
+@if(Model.Item != null){
+// ITEM 
+<ul>
+    <li>Name: @Model.Item.name</li>
+    <li>Price: @Model.Item.price</li>
+    <li>Quantity: @Model.Item.quantity</li>
+</ul>
+
+
+<script src="/scripts/paypal-button.min.js?merchant=4HVKPA3XLL7AQ"
+    data-button="buynow"
+    data-name="@Model.Item.name"
+    data-amount="@Model.Item.price"
+    data-env="sandbox"
+></script>
+}
+else{
+    <text>Sorry please try again!
+</text>
+}
