@@ -1,0 +1,59 @@
+﻿<Page x:Class="Battlehack.MainSelector"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:k="http://schemas.microsoft.com/kinect/2013"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Microsoft.Samples.Kinect.ControlsBasics" 
+      mc:Ignorable="d" 
+        d:DesignWidth="1200"
+        d:DesignHeight="700"
+	Title="MainSelector">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"  Margin="10 0 10 5" Height="100">
+            <k:KinectUserViewer k:KinectRegion.KinectRegion="{Binding ElementName=kinectRegion}" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <k:KinectSensorChooserUI HorizontalAlignment="Center" VerticalAlignment="Top" Name="sensorChooserUi" />
+        </Grid>
+
+        <k:KinectRegion Grid.Row="1" x:Name="kinectRegion">
+            <Grid x:Name="kinectRegionGrid" Margin="10,5,10,20">
+
+                <k:KinectScrollViewer Grid.Row="0" Name="scrollViewer" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+                    <WrapPanel VerticalAlignment="Center" x:Name="wrapPanel" Orientation="Vertical" k:KinectTileButton.Click="KinectTileButtonClick">
+                        <!-- items for design layout.  They will be replaced at runtime. -->
+                        <k:KinectTileButton Label="Plaid" Width="600" Height="600" Background="White">
+                            <Image Source="/Images/shirt1.png"></Image>
+                        </k:KinectTileButton>
+                        <k:KinectTileButton Label="Plaid"  Width="600" Height="600" Background="White">
+                            <Image Source="/Images/shirt2.png"></Image>
+                        </k:KinectTileButton>
+                        <k:KinectTileButton Label="Plaid"  Width="600" Height="600" Background="White">
+                            <Image Source="/Images/shirt3.png"></Image>
+                        </k:KinectTileButton>
+                        <k:KinectTileButton Label="Plaid" Width="600" Height="600" Background="White">
+                            <Image Source="/Images/shirt4.png"></Image>
+                        </k:KinectTileButton>
+                        <k:KinectTileButton Label="Plaid" Width="600" Height="600" Background="White">
+                            <Image Source="/Images/shirt5.png"></Image>
+                        </k:KinectTileButton>
+                        <k:KinectTileButton Label="Plaid" Width="600" Height="600" Background="White">
+                            <Image Source="/Images/shirt6.png"></Image>
+                        </k:KinectTileButton>
+                        <k:KinectTileButton Label="T-Shirt" Width="600" Height="600" Background="White">
+                            <Image Source="/Images/shirt7.png"></Image>
+                        </k:KinectTileButton>
+
+
+                    </WrapPanel>
+                </k:KinectScrollViewer>
+
+            </Grid>
+        </k:KinectRegion>
+    </Grid>
+</Page>

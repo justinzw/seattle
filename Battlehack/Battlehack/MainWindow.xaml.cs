@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Kinect.Toolkit.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace Battlehack
         public MainWindow()
         {
             InitializeComponent();
+            mainFrame.Navigate(new Uri("/MainSelector.xaml", UriKind.Relative));
         }
+
+        public override void BeginInit()
+        {
+            base.BeginInit();
+        }
+
     }
 }
