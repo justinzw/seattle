@@ -21,24 +21,10 @@ namespace MvcApplication1.Controllers
             if (!string.IsNullOrWhiteSpace(id))
             {
                 viewModel.Item = new PayPal.Api.Payments.Item();
-                switch (id.ToLowerInvariant())
-                {
-                    case "3848203":
-                        viewModel.Item.name = "Macklemore Tshirt";
-                        viewModel.Item.price = "20.0";
-                        viewModel.Item.quantity = "1";
-                        viewModel.Item.currency = "USD";
-                        break;
-                    case "3842203":
-                        viewModel.Item.name = "Macklemore Tshirt";
-                        viewModel.Item.price = "20.0";
-                        viewModel.Item.quantity = "1";
-                        viewModel.Item.currency = "USD";
-                        break;
-                    default:
-                        viewModel.Item = null;
-                        break;
-                }
+                viewModel.Item.name = "Macklemore Tshirt";
+                viewModel.Item.price = "20.0";
+                viewModel.Item.quantity = "1";
+                viewModel.Item.currency = "USD";                 
             }
             var storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=battlehackfinal;AccountKey=M/8ixre2UT2TWaa4CmnhknWpEchbpFi6qNQ8bn9LG9OJlWWDzM6xMNZBkNmDtN0M78fNjQ6KW7aksn+oO8yZzw==");
             

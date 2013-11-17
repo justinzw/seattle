@@ -120,7 +120,7 @@
                 <Image Margin="0,0,0,20" Source="/images/QRCode.png"></Image>
                 <TextBlock TextWrapping="Wrap" FontSize="20" FontWeight="Bold" FontFamily="Helvetica Neue">Other mobile devices:
                         </TextBlock>
-                <TextBlock TextWrapping="Wrap" x:Name="SmsText"  FontSize="20" FontFamily="Helvetica Neue">SMS 3848203 to 206-745-4816
+                <TextBlock TextWrapping="Wrap" x:Name="SmsText"  FontSize="25" FontFamily="Helvetica Neue">SMS 3848203 to 206-745-4816
                             </TextBlock>
             </StackPanel>
             <Image Grid.Column="1"  Name ="Backdrop"/>
