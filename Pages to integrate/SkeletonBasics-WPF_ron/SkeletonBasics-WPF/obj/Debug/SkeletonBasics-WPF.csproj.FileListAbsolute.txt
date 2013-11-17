@@ -64,3 +64,6 @@ C:\Users\jwoo\Desktop\SkeletonBasics-WPF_ron\SkeletonBasics-WPF\obj\Debug\Skelet
 C:\Users\jwoo\Desktop\SkeletonBasics-WPF_ron\SkeletonBasics-WPF\obj\Debug\SkeletonBasics-WPF.g.resources
 C:\Users\jwoo\Desktop\SkeletonBasics-WPF_ron\SkeletonBasics-WPF\obj\Debug\Microsoft.Samples.Kinect.SkeletonBasics.Properties.Resources.resources
 C:\Users\jwoo\Desktop\SkeletonBasics-WPF_ron\SkeletonBasics-WPF\obj\Debug\SkeletonBasics-WPF.csproj.GenerateResource.Cache
+C:\Users\jwoo\Documents\GitHub\seattle\Pages to integrate\SkeletonBasics-WPF_ron\SkeletonBasics-WPF\bin\Debug\SkeletonBasics-WPF.exe.config
+C:\Users\jwoo\Documents\GitHub\seattle\Pages to integrate\SkeletonBasics-WPF_ron\SkeletonBasics-WPF\obj\Debug\SkeletonBasics-WPF.exe
+C:\Users\jwoo\Documents\GitHub\seattle\Pages to integrate\SkeletonBasics-WPF_ron\SkeletonBasics-WPF\obj\Debug\SkeletonBasics-WPF.pdb
