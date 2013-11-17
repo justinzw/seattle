@@ -22,7 +22,7 @@ namespace Microsoft.Samples.Kinect.BackgroundRemovalBasics
 
         private Model3D currentModel;
 
-        private string texture1, texture2, currentTexture;
+        //private string texture1, texture2, currentTexture;
         private int currentindex;
 
         private string[] shirtList = {

@@ -92,9 +92,10 @@
         </Grid>
         <Grid Grid.Row="1">
             <Image Name ="Backdrop" Source="Images\Background.jpg"/>
-            <Image Name ="MaskedColor"/>
-            <Image Name ="MaskedColor2"/>
-            <Image Name ="MaskedColor3" Width="960" Height="720"  />
+            <Image Name ="MaskedColor" Width="640" Height="480" />
+            <Image Name ="MaskedColor2" Width="640" Height="480" />
+            <Image Name ="MaskedColor3" Width="640" Height="480" />
+            <!--Image Name ="MaskedColor3" Width="960" Height="720"  /-->
  
 
             <t:HelixViewport3D x:Name="view1"  Background="Transparent" Width="640" Height="480">

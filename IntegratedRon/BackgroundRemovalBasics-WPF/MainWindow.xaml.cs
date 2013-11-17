@@ -201,8 +201,31 @@ namespace Microsoft.Samples.Kinect.BackgroundRemovalBasics
         /// <param name="e">event arguments</param>
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            this.sensorChooser.Stop();
-            this.sensorChooser = null;
+
+            try
+            {
+                if (null != this.sensorChooser)
+                {
+                    this.sensorChooser.Stop();
+                    this.sensorChooser = null;
+                }
+
+                if (null != sensor)
+                {
+                    this.sensor.Stop();
+                    this.sensor = null;
+                }
+
+                if (null != sensor2)
+                {
+                    this.sensor2.Stop();
+                    this.sensor2 = null;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         bool nobackground = true;
@@ -238,7 +261,7 @@ namespace Microsoft.Samples.Kinect.BackgroundRemovalBasics
                         this.foregroundBitmap3.WritePixels(new Int32Rect(0, 0, colorFrame.Width, colorFrame.Height), this.colorPixelData, colorFrame.Width * 4, 0);
                     }
                 }
-                
+
             }
 
             try
@@ -247,7 +270,7 @@ namespace Microsoft.Samples.Kinect.BackgroundRemovalBasics
                 {
                     if (null != depthFrame)
                     {
-                        
+
                         this.backgroundRemovedColorStream.ProcessDepth(depthFrame.GetRawPixelData(), depthFrame.Timestamp);
                     }
                 }
@@ -337,7 +360,7 @@ namespace Microsoft.Samples.Kinect.BackgroundRemovalBasics
             {
                 if (backgroundRemovedFrame != null)
                 {
-                    if (null == this.foregroundBitmap || this.foregroundBitmap.PixelWidth != backgroundRemovedFrame.Width 
+                    if (null == this.foregroundBitmap || this.foregroundBitmap.PixelWidth != backgroundRemovedFrame.Width
                         || this.foregroundBitmap.PixelHeight != backgroundRemovedFrame.Height)
                     {
                         this.foregroundBitmap = new WriteableBitmap(backgroundRemovedFrame.Width, backgroundRemovedFrame.Height, 96.0, 96.0, PixelFormats.Bgra32, null);
@@ -354,9 +377,6 @@ namespace Microsoft.Samples.Kinect.BackgroundRemovalBasics
                         0);
                 }
             }
-
-
-
 
         }
 
@@ -487,7 +507,14 @@ namespace Microsoft.Samples.Kinect.BackgroundRemovalBasics
             float W = skel.BoneOrientations[JointType.Spine].AbsoluteRotation.Quaternion.W;
             //Console.WriteLine(X.ToString() + Y.ToString() + Z.ToString() + W);
 
+            TranslateTransform3D translateTransform = new TranslateTransform3D();
 
+            //translateTransform.OffsetX = skel.Joints[JointType.Spine].Position.X * 10;
+            //translateTransform.OffsetY = -skel.Joints[JointType.Spine].Position.Y * 5;
+            //translateTransform.OffsetZ = skel.Joints[JointType.Spine].Position.Z;
+            Point point = SkeletonPointToScreen(skel.Joints[JointType.Spine].Position);
+            translateTransform.OffsetX = point.X;
+            translateTransform.OffsetY = point.Y;
 
             Quaternion quaternion = new Quaternion(X, Y, Z, W);
             QuaternionRotation3D myQuaternionRotation3D = new QuaternionRotation3D(quaternion);
@@ -504,22 +531,39 @@ namespace Microsoft.Samples.Kinect.BackgroundRemovalBasics
             myRotateTransform3D.Rotation = myAxisAngleRotation3D;
 
             //Console.WriteLine("Axis {0}, Angle {1}", quaternion.Axis.ToString(), quaternion.Angle.ToString());
-            Console.WriteLine("{0}, {1}, {2}", quaternion.Axis.X.ToString("F"), quaternion.Axis.Y.ToString("F"), quaternion.Axis.Z.ToString("F"));
-
+            //Console.WriteLine("{0}, {1}, {2}", quaternion.Axis.X.ToString("F"), quaternion.Axis.Y.ToString("F"), quaternion.Axis.Z.ToString("F"));
+            Console.WriteLine("{0}, {1}", translateTransform.OffsetX, translateTransform.OffsetY);
 
             Transform3DGroup myTransform3DGroup = new Transform3DGroup();
-            myTransform3DGroup.Children.Add(myRotateTransform3D);
+            //myTransform3DGroup.Children.Add(myRotateTransform3D);
+            //myTransform3DGroup= myTransform3DGroup.Inverse;
+            myTransform3DGroup.Children.Add(translateTransform);
 
-            this.Dress.Transform = (Transform3D)myTransform3DGroup.Inverse;
+            this.Dress.Transform = (Transform3D)myTransform3DGroup;
+            //this.Dress.Transform = (Transform3D)myTransform3DGroup.Inverse;
+
         }
 
+
+        /// <summary>
+        /// Maps a SkeletonPoint to lie within our render space and converts to Point
+        /// </summary>
+        /// <param name="skelpoint">point to map</param>
+        /// <returns>mapped point</returns>
+        private Point SkeletonPointToScreen(SkeletonPoint skelpoint)
+        {
+            // Convert point to depth space.  
+            // We are not using depth directly, but we do want the points in our 640x480 output resolution.
+            ColorImagePoint imagePoint = this.sensor.CoordinateMapper.MapSkeletonPointToColorPoint(skelpoint, ColorImageFormat.RgbResolution640x480Fps30);
+            return new Point(imagePoint.X, imagePoint.Y);
+        }
 
         /// <summary>
         /// Enables the chosen sensor
         /// </summary>
 
         private void EnableSensor(KinectSensor NewSensor)
-        {        
+        {
             if (NewSensor != null)
             {
                 try
@@ -619,12 +663,13 @@ namespace Microsoft.Samples.Kinect.BackgroundRemovalBasics
                 dc.DrawRectangle(backdropBrush, null, new Rect(new Point(), new Size(colorWidth, colorHeight)));
 
                 // render the color image masked out by players
-                var colorBrush = new VisualBrush(MaskedColor);
+                var colorBrush = new VisualBrush(
+                    );
                 dc.DrawRectangle(colorBrush, null, new Rect(new Point(), new Size(colorWidth, colorHeight)));
             }
 
             renderBitmap.Render(dv);
-    
+
             // create a png bitmap encoder which knows how to save a .png file
             BitmapEncoder encoder = new PngBitmapEncoder();
 
@@ -652,7 +697,7 @@ namespace Microsoft.Samples.Kinect.BackgroundRemovalBasics
 
             }
         }
-        
+
         /// <summary>
         /// Handles the checking or unchecking of the near mode combo box
         /// </summary>
@@ -674,16 +719,16 @@ namespace Microsoft.Samples.Kinect.BackgroundRemovalBasics
         {
             if (x)
             {
-            System.Windows.Controls.Canvas.SetZIndex(this.MaskedColor3, -1);
+                System.Windows.Controls.Canvas.SetZIndex(this.MaskedColor3, -1);
                 x = !x;
             }
-            else 
+            else
             {
                 System.Windows.Controls.Canvas.SetZIndex(this.MaskedColor3, 1);
-                x=!x;
+                x = !x;
             }
 
-        
+
         }
     }
 }
