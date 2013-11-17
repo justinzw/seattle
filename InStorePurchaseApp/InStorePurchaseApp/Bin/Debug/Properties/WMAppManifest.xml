@@ -17,7 +17,7 @@
           <SmallImageURI IsRelative="true" IsResource="false">Images\logo-202.png</SmallImageURI>
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Images\logo-336.png</BackgroundImageURI>
-          <Title>Bellalicious</Title>
+          <Title></Title>
           <BackContent></BackContent>
           <BackBackgroundImageURI></BackBackgroundImageURI>
           <BackTitle></BackTitle>
