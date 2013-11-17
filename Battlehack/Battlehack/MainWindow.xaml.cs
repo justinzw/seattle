@@ -1,8 +1,8 @@
 ﻿using Microsoft.Kinect.Toolkit.Controls;
+using Microsoft.Speech.Recognition;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Speech.Recognition;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,16 +21,19 @@ namespace Battlehack
     {
         public static Frame Frame;
     }
+
+    public static class Speech
+    {
+        public static SpeechRecognitionEngine Engine;
+    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        SpeechRecognitionEngine sre;
         public MainWindow()
         {
-            InitializeComponent(); sre = new SpeechRecognitionEngine();
+            InitializeComponent(); 
             mainFrame.Navigate(new Uri("/MainSelector.xaml", UriKind.Relative));
             Navigation.Frame = mainFrame;
             SpeechInit();
@@ -44,32 +47,24 @@ namespace Battlehack
         private void SpeechInit()
         {
             // Create a new SpeechRecognitionEngine instance.
+            Speech.Engine = new SpeechRecognitionEngine();
 
-            // Create a simple grammar that recognizes "red", "green", or "blue".
-            Choices colors = new Choices();
-            colors.Add(new string[] { "red", "green", "blue" });
+            Choices keywords = new Choices();
+            keywords.Add(new string[] { "design", "background", "photo" });
 
             // Create a GrammarBuilder object and append the Choices object.
             GrammarBuilder gb = new GrammarBuilder();
-            gb.Append(colors);
+            gb.Append(keywords);
 
             // Create the Grammar instance and load it into the speech recognition engine.
             Grammar g = new Grammar(gb);
-            sre.LoadGrammar(g);
+            Speech.Engine.LoadGrammar(g);
 
             // Configure the input to the speech recognizer.
-            sre.SetInputToDefaultAudioDevice();
+            Speech.Engine.SetInputToDefaultAudioDevice();
 
-            // Register a handler for the SpeechRecognized event.
-            sre.SpeechRecognized += sre_SpeechRecognized;
-            // Start asynchronous, continuous speech recognition.
-            sre.RecognizeAsync(RecognizeMode.Single);
 
         }
-
-        void sre_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
-        {
-            Console.WriteLine("Speech recognized: " + e.Result.Text);
-        }        
+    
     }
 }

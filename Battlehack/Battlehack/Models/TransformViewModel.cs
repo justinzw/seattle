@@ -88,7 +88,11 @@ namespace Battlehack.Models
             }
         }
 
-        public TransformViewModel(HelixViewport3D viewport)
+        public TransformViewModel(HelixViewport3D viewport):this(viewport, 6)
+        {
+        }
+
+        public TransformViewModel(HelixViewport3D viewport, int id)
         {
             if (viewport == null)
             {
@@ -98,9 +102,14 @@ namespace Battlehack.Models
             this.dispatcher = Dispatcher.CurrentDispatcher;
             this.viewport = viewport;
 
-            this.currentModelPath = shirtList[0];
+            this.currentModelPath = shirtList[id];
         }
 
+        public void ChangeShirt(int id)
+        {
+            this.CurrentModelPath = shirtList[id];
+            FileOpen();
+        }
         public void ChangeShirt()
         {
             currentindex++;

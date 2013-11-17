@@ -80,3 +80,4 @@ C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\ru\Syst
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\zh-Hans\System.Spatial.resources.dll
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\zh-Hant\System.Spatial.resources.dll
 C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\bin\Debug\Microsoft.Speech.dll
+C:\Users\cbingh\Documents\GitHub\seattle\Battlehack\Battlehack\obj\Debug\Battlehack.csprojResolveAssemblyReference.cache

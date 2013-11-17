@@ -95,6 +95,10 @@
         </Grid>
         <Grid Grid.Row="1" x:Name="EntireGrid" Height="800" >
             <Image Name ="Backdrop"/>
+
+            <Image Name ="Macklemore" Source="/Images/Macklemore.jpg" Margin="400,0,0,0" Visibility="Hidden"/>
+
+            <Image Name ="SpaceNeedle" Source="/Images/SpaceNeedle.jpg" Margin="-200,0,0,0" Visibility="Hidden"/>
             <Image Name ="MaskedColor"/>
             <Image Name ="MaskedColor2"/>
             <Image Name ="MaskedColor3" Width="960" Height="720"  />

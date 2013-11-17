@@ -2,12 +2,12 @@
 using Microsoft.Kinect;
 using Microsoft.Kinect.Toolkit;
 using Microsoft.Kinect.Toolkit.BackgroundRemoval;
+using Microsoft.Speech.Recognition;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Globalization;
 using System.IO;
-using System.Speech.Recognition;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -24,9 +24,47 @@ namespace Battlehack
         private CloudStorageAccount storageAccount;
         private Joint? previousJoint;
 
+        void sre_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            if (e.Result.Confidence > 0)
+            {
+                switch (e.Result.Text.ToLowerInvariant())
+                {
+                    case "design":
+                        viewModel = new TransformViewModel(view1, 0);
+                        viewModel.FileOpen();
+                        this.DataContext = viewModel;
+                        ((TransformViewModel)this.DataContext).FileOpen();
+                        ChooseSkeleton();
+                        break;
+                    case "background":
+                        if(this.SpaceNeedle.Visibility == System.Windows.Visibility.Hidden){
+                            this.MaskedColor3.Visibility = System.Windows.Visibility.Hidden;
+                            this.SpaceNeedle.Visibility = System.Windows.Visibility.Visible;
+                        }
+                        else if (this.Macklemore.Visibility == System.Windows.Visibility.Hidden)
+                        {
+                            this.SpaceNeedle.Visibility = System.Windows.Visibility.Hidden;
+                            this.Macklemore.Visibility = System.Windows.Visibility.Visible;
+                        }
+                        break;
+                    case "photo":
+                        this.TakeScreenShot();
+                        break;
+                }
+                Console.WriteLine("Speech recognized: " + e.Result.Text);
+            }
+        }    
+
         public ModelTransform()
         {
             InitializeComponent();
+
+            // Register a handler for the SpeechRecognized event.
+            Speech.Engine.SpeechRecognized += sre_SpeechRecognized;
+            // Start asynchronous, continuous speech recognition.
+            Speech.Engine.RecognizeAsync(RecognizeMode.Multiple);
+
             storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=battlehackfinal;AccountKey=M/8ixre2UT2TWaa4CmnhknWpEchbpFi6qNQ8bn9LG9OJlWWDzM6xMNZBkNmDtN0M78fNjQ6KW7aksn+oO8yZzw==");
             this.sensor = KinectSensor.KinectSensors[0];
 
@@ -601,6 +639,11 @@ namespace Battlehack
         /// <param name="e">event arguments</param>
         private void ButtonScreenshotClick(object sender, RoutedEventArgs e)
         {
+            TakeScreenShot();
+        }
+        private void TakeScreenShot()
+        {
+            
             var time = DateTime.Now.ToString("hh'-'mm'-'ss", CultureInfo.CurrentUICulture.DateTimeFormat);
             RenderTargetBitmap targetBitmap =
                 new RenderTargetBitmap((int)EntireGrid.ActualWidth,

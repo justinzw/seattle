@@ -181,6 +181,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\macklemore.jpg" />
+    <Resource Include="Images\spaceneedle.jpg" />
     <Content Include="Microsoft.Speech.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
