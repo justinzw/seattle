@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{a1413299-5726-4ff0-88f7-51a5c1a0c937}" Title="InStorePurchaseApp" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="InStorePurchaseApp author" Description="Sample description" Publisher="InStorePurchaseApp" PublisherID="{f2f93b59-1bc8-4647-9f88-aa55b3eeb472}">
-    <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
+  <App xmlns="" ProductID="{a1413299-5726-4ff0-88f7-51a5c1a0c937}" Title="Bellalicious" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="InStorePurchaseApp author" Description="Sample description" Publisher="InStorePurchaseApp" PublisherID="{f2f93b59-1bc8-4647-9f88-aa55b3eeb472}">
+    <IconPath IsRelative="true" IsResource="false">Images\logo-336.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_ISV_CAMERA" />
@@ -14,9 +14,9 @@
     <Tokens>
       <PrimaryToken TokenID="InStorePurchaseAppToken" TaskName="_default">
         <TemplateFlip>
-          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
+          <SmallImageURI IsRelative="true" IsResource="false">Images\logo-202.png</SmallImageURI>
           <Count>0</Count>
-          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
+          <BackgroundImageURI IsRelative="true" IsResource="false">Images\logo-336.png</BackgroundImageURI>
           <Title>InStorePurchaseApp</Title>
           <BackContent>
           </BackContent>

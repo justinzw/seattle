@@ -148,6 +148,12 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\buy.png" />
+    <Content Include="Images\logo-202.png" />
+    <Content Include="Images\logo-336.png" />
+    <Content Include="Images\qrcode-detected.png" />
+    <Content Include="Images\qrcode.png" />
+    <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">

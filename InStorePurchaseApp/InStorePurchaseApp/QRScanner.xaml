@@ -17,7 +17,7 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="120" />
+            <RowDefinition Height="220" />
         </Grid.RowDefinitions>
 
         <Canvas x:Name="Canvas">
@@ -34,10 +34,20 @@
             </Canvas.Background>
         </Canvas>
         <!--Used for debugging >-->
-        <StackPanel Grid.Row="1" Margin="20, 0">
+        <StackPanel Grid.Row="1" Margin="10, -20">
             <TextBlock x:Name="tbBarcodeType" FontWeight="ExtraBold" Visibility="Collapsed"/>
-            <TextBlock x:Name="tbBarcodeData" FontWeight="ExtraBold" TextWrapping="NoWrap" />
-            <Button x:Name="puchaseButton" Click="puchaseButtonClick">Puchase</Button>
+            <TextBlock x:Name="tbBarcodeData" FontWeight="ExtraBold" Visibility="Collapsed" TextWrapping="NoWrap" />
+
+            <Button x:Name="prePurchaseButton" BorderThickness="0.0" Click="puchaseButtonClick">
+                <Button.Content>
+                    <Image x:Name="qrCodeButton"  Source="/Images/qrcode-detected.png" Height="200"></Image>
+                </Button.Content>
+            </Button>
+            <Button x:Name="purchaseButton" BorderThickness="0.0" Visibility="Collapsed"  Click="puchaseButtonClick">
+                <Button.Content>
+                    <Image Source="/Images/buy.png" Height="200"></Image>
+                </Button.Content>
+            </Button>
         </StackPanel>
     </Grid>
 

@@ -15,6 +15,7 @@ using PayPal.Checkout;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.Windows.Media;
 
 namespace InStorePurchaseApp
 {
@@ -122,6 +123,9 @@ namespace InStorePurchaseApp
             // Example: { "Id": "1", "Price":"10.00", "Description":"Test description", "Quantity": 2}
             // http://www.qrstuff.com/
             item = JsonConvert.DeserializeObject<ShoppingItem>(obj.Text);
+
+            prePurchaseButton.Visibility = System.Windows.Visibility.Collapsed;
+            purchaseButton.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void cameraShutterKeyHalfPressed(object sender, EventArgs e)

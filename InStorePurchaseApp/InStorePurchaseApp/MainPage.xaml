@@ -14,10 +14,9 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="Transparent" Height="768" VerticalAlignment="Top">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!-- LOCALIZATION NOTE:
@@ -40,17 +39,15 @@
          -->
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 
+            <Image Source="/Images/qrcode.png"  x:Name="img" Stretch="Fill" />
+            <StackPanel x:Name="control" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="176" Margin="128,0,128,84">
+                <Button Width="173" Height="173" Content="" HorizontalAlignment="Left" Margin="0" BorderThickness="0.0" VerticalAlignment="Top" Click="Button_Click"/>
+            </StackPanel>
         </Grid>
-        <Button Content="Scan QR Code&#xD;&#xA;" HorizontalAlignment="Left" Margin="173,103,0,0" Grid.Row="1" VerticalAlignment="Top" Click="Button_Click"/>
-
         <!--Uncomment to see an alignment grid to help ensure your controls are
             aligned on common boundaries.  The image has a top margin of -32px to
             account for the System Tray. Set this to 0 (or remove the margin altogether)

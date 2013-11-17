@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using InStorePurchaseApp.Resources;
+using System.Threading;
 
 namespace InStorePurchaseApp
 {
@@ -16,6 +17,7 @@ namespace InStorePurchaseApp
         // Constructor
         public MainPage()
         {
+            Thread.Sleep(3000);
             InitializeComponent();
 
             // Sample code to localize the ApplicationBar
