@@ -48,7 +48,15 @@ namespace Battlehack
             // Bind the sensor chooser's current sensor to the KinectRegion
             var regionSensorBinding = new Binding("Kinect") { Source = this.sensorChooser };
             BindingOperations.SetBinding(this.kinectRegion, KinectRegion.KinectSensorProperty, regionSensorBinding);
+            Navigation.Frame.Navigating += Frame_Navigating;
         }
+
+        void Frame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+            this.sensorChooser.Stop();
+            Navigation.Frame.Navigating -= Frame_Navigating;
+        }
+
 
         /// <summary>
         /// Called when the KinectSensorChooser gets a new sensor
@@ -100,15 +108,6 @@ namespace Battlehack
             }
         }
 
-        /// <summary>
-        /// Execute shutdown tasks
-        /// </summary>
-        /// <param name="sender">object sending the event</param>
-        /// <param name="e">event arguments</param>
-        private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            this.sensorChooser.Stop();
-        }
 
         /// <summary>
         /// Handle a button click from the wrap panel.
@@ -117,15 +116,7 @@ namespace Battlehack
         /// <param name="e">Event arguments</param>
         private void KinectTileButtonClick(object sender, RoutedEventArgs e)
         {
-            var button = (KinectTileButton)e.OriginalSource;
-            //TODO
-            //var selectionDisplay = new SelectionDisplay(button.Label as string);
-            //this.kinectRegionGrid.Children.Add(selectionDisplay);
-            //e.Handled = true;
-            //this.scrollViewer.Visibility = System.Windows.Visibility.Hidden;
-            //this.sensorChooser.Stop();
-            //NavigationService nav = NavigationService.GetNavigationService(this);
-            //nav.Navigate(new Uri("Page1.xaml", UriKind.RelativeOrAbsolute));
+            Navigation.Frame.Navigate(new Uri("/ModelTransform.xaml", UriKind.Relative));
         }
 
         /// <summary>

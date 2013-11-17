@@ -16,15 +16,21 @@ using System.Windows.Shapes;
 
 namespace Battlehack
 {
+    public static class Navigation
+    {
+        public static Frame Frame;
+    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
             mainFrame.Navigate(new Uri("/MainSelector.xaml", UriKind.Relative));
+            Navigation.Frame = mainFrame;
         }
 
         public override void BeginInit()

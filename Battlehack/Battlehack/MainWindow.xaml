@@ -104,6 +104,7 @@
     
 
     <Grid>
-        <Frame x:Name="mainFrame" Grid.Row="2" BorderThickness="2" Margin="10,10,10,10" BorderBrush="#FFB4B4B4" Content="" Padding="10"/>
+        <Image Source="/Images/Logo.png" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left" ></Image>
+        <Frame x:Name="mainFrame" Grid.Row="2" BorderThickness="0" Margin="10,10,10,10" BorderBrush="#FFB4B4B4" Content="" NavigationUIVisibility="Hidden" Padding="10"/>
     </Grid>
 </Window>
