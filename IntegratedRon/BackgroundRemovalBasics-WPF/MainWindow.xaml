@@ -94,13 +94,14 @@
             <Image Name ="Backdrop" Source="Images\Background.jpg"/>
             <Image Name ="MaskedColor" Width="640" Height="480" />
             <Image Name ="MaskedColor2" Width="640" Height="480" />
-            <Image Name ="MaskedColor3" Width="640" Height="480" />
-            <!--Image Name ="MaskedColor3" Width="960" Height="720"  /-->
- 
+            <!--Image Name ="MaskedColor3" Width="640" Height="480" /-->
+            <Image Name ="MaskedColor3" Width="960" Height="720"  />
 
-            <t:HelixViewport3D x:Name="view1"  Background="Transparent" Width="640" Height="480">
+             <!--Width="640" Height="480"-->
+            <t:HelixViewport3D x:Name="view1"  Background="Transparent" Width="960" Height="720">
                 <t:HelixViewport3D.DefaultCamera>
-                    <PerspectiveCamera Position="0, 0, 100" LookDirection="0, 0, -100" UpDirection="0,1,0" FieldOfView="1" NearPlaneDistance="0.001" />
+                    <PerspectiveCamera Position="0, 0, 1" LookDirection="0, 0, -1" UpDirection="0,1,0" FieldOfView="1" NearPlaneDistance="0.001" />
+
                 </t:HelixViewport3D.DefaultCamera>
 
                 <t:DefaultLights/>

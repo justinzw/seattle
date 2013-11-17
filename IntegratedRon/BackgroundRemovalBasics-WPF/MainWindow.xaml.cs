@@ -94,6 +94,11 @@ namespace Microsoft.Samples.Kinect.BackgroundRemovalBasics
         private MainViewModel viewModel;
 
         /// <summary>
+        /// The transformation between the world and camera view coordinate system
+        /// </summary>
+        //private Matrix4 worldToCameraTransform;
+
+        /// <summary>
         /// Initializes a new instance of the MainWindow class.
         /// </summary>
         public MainWindow()
@@ -509,12 +514,13 @@ namespace Microsoft.Samples.Kinect.BackgroundRemovalBasics
 
             TranslateTransform3D translateTransform = new TranslateTransform3D();
 
-            //translateTransform.OffsetX = skel.Joints[JointType.Spine].Position.X * 10;
-            //translateTransform.OffsetY = -skel.Joints[JointType.Spine].Position.Y * 5;
-            //translateTransform.OffsetZ = skel.Joints[JointType.Spine].Position.Z;
-            Point point = SkeletonPointToScreen(skel.Joints[JointType.Spine].Position);
-            translateTransform.OffsetX = point.X;
-            translateTransform.OffsetY = point.Y;
+            translateTransform.OffsetX = skel.Joints[JointType.ShoulderCenter].Position.X * 3;
+            translateTransform.OffsetY = skel.Joints[JointType.HipCenter].Position.Y * 2;
+            
+            //ScaleTransform3D scaleTransform = new ScaleTransform3D();
+            //scaleTransform.ScaleX = -skel.Joints[JointType.Spine].Position.Z;
+            //scaleTransform.ScaleZ = -skel.Joints[JointType.Spine].Position.Z;
+
 
             Quaternion quaternion = new Quaternion(X, Y, Z, W);
             QuaternionRotation3D myQuaternionRotation3D = new QuaternionRotation3D(quaternion);
@@ -532,16 +538,14 @@ namespace Microsoft.Samples.Kinect.BackgroundRemovalBasics
 
             //Console.WriteLine("Axis {0}, Angle {1}", quaternion.Axis.ToString(), quaternion.Angle.ToString());
             //Console.WriteLine("{0}, {1}, {2}", quaternion.Axis.X.ToString("F"), quaternion.Axis.Y.ToString("F"), quaternion.Axis.Z.ToString("F"));
-            Console.WriteLine("{0}, {1}", translateTransform.OffsetX, translateTransform.OffsetY);
+            //Console.WriteLine("{0}, {1}", translateTransform.OffsetX, translateTransform.OffsetY);
 
             Transform3DGroup myTransform3DGroup = new Transform3DGroup();
-            //myTransform3DGroup.Children.Add(myRotateTransform3D);
-            //myTransform3DGroup= myTransform3DGroup.Inverse;
+            myTransform3DGroup.Children.Add(myRotateTransform3D.Inverse as Transform3D);
             myTransform3DGroup.Children.Add(translateTransform);
+            //myTransform3DGroup.Children.Add(scaleTransform);
 
             this.Dress.Transform = (Transform3D)myTransform3DGroup;
-            //this.Dress.Transform = (Transform3D)myTransform3DGroup.Inverse;
-
         }
 
 
